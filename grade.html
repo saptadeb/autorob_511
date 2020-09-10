@@ -1,0 +1,65 @@
+<html>
+<head>
+<script src="grade.js"></script>
+
+<script type="text/javascript">
+  function startProc() {
+    document.body.innerHTML = JSON.stringify(grade);
+    console.log(grade);
+    tablestr = "<table>";
+    student_keys = Object.keys(grade);
+    for (i=0;i<student_keys.length;i++) {
+      student = student_keys[i];
+
+      //document.body.innerHTML += student + "<br>";
+      console.log(student);
+
+      tablestr += "<tr>";
+      tablestr += "<td>"+i+"</td>";
+      tablestr += "<td>"+grade[student].name+"</td>";
+      tablestr += "<td>"+grade[student].unique_name+"</td>";
+      for (j=0;j<grade[student].quizzes.length;j++) {
+        if (grade[student].quizzes[j].status==='PENDING')
+          tablestr += "<td style='background:#aaaaaa'>";
+        else
+          tablestr += "<td style='background:#66aaff'>";
+        tablestr += "<div style='font-size:9px'> Quiz "+j+"</div><br>";
+        tablestr += grade[student].quizzes[j].status+"</td>";
+      }
+
+      feature_keys = Object.keys(grade[student].assignments);
+      for (j=0;j<feature_keys.length;j++) {
+        feature = feature_keys[j]
+        if (grade[student].assignments[feature].status==='PENDING')
+          tablestr += "<td style='background:#888888'>"; 
+        else if (grade[student].assignments[feature].status==='CHECK')
+          tablestr += "<td style='background:#88ff96'>"; 
+          <!--tablestr += "<td style='background:#888888' title="+ grade[student].assignments[feature].comments+">";-->
+        else if (grade[student].assignments[feature].status==='PASS')
+          tablestr += "<td style='background:#8888FF'>"; 
+          <!--tablestr += "<td style='background:#888888' title="+ grade[student].assignments[feature].comments+">";-->
+        else
+          tablestr += "<td style='background:#FF8888'>";
+        tablestr += "<div style='font-size:9px'>"+feature+"</div><br>";
+        tablestr += grade[student].assignments[feature].status+"</td>";
+      }
+      tablestr += "<td>"+grade[student].email+"</td>";
+      tablestr += "</tr>";
+    }
+    tablestr += "</table>";
+    document.body.innerHTML = tablestr;
+/*
+    document.body.innerHTML = JSON.stringify(teams[0])+"<br><br>";
+    for (i=1;i<teams.length;i++) {
+      document.body.innerHTML += JSON.stringify(teams[i])+"<br><br>";
+    }
+*/
+  }
+</script>
+</head>
+<!--<body onload="startProc(); console.log('here');"> 
+-->
+<body>
+<script> startProc(); </script>
+</body>
+</html>
