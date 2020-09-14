@@ -231,6 +231,8 @@ function animate() {
             case "depth-first":
             case "breadth-first":
             case "greedy-best-first":
+                search_result = greedy();
+                break;
             case "A-star":
                 search_result = iterateGraphSearch();
                 break;
