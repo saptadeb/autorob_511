@@ -191,21 +191,21 @@ function init() {
 function initSearch() {
 
     // specify default search algorithm to use for planning
-    //search_alg = "depth-first";
-    search_alg = "breadth-first";
-    // search_alg = "greedy-best-first";
+    // search_alg = "depth-first";
+    // search_alg = "breadth-first";
+    search_alg = "greedy-best-first";
     // search_alg = "A-star";
-    //search_alg = "RRT";
-    //search_alg = "RRT-connect";
-    //search_alg = "RRT-star";
+    // search_alg = "RRT";
+    // search_alg = "RRT-connect";
+    // search_alg = "RRT-star";
 
     // specify default the world for the planner
     //  (stored as "range" global variable with name "planning_scene")
-    //planning_scene = "empty";
-    // planning_scene = "misc";
-    //planning_scene = "narrow1";
-    planning_scene = "narrow2";
-    //planning_scene = "three_sections";
+    // planning_scene = "empty";
+    planning_scene = "misc";
+    // planning_scene = "narrow1";
+    // planning_scene = "narrow2";
+    // planning_scene = "three_sections";
 
     // specify default eps (epsilon) spatial resolution variable
     //   for RRT, specifies threshold radius for step size and reaching goal
