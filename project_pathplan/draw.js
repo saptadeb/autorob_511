@@ -229,7 +229,11 @@ function animate() {
         // call iteration for the selected search algorithm
         switch (search_alg) {
             case "depth-first":
+                search_result = dfs();
+                break;
             case "breadth-first":
+                search_result = bfs();
+                break;
             case "greedy-best-first":
                 search_result = greedy();
                 break;

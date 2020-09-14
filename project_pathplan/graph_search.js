@@ -29,6 +29,7 @@ function initSearchGraph() {
 
     // create the search queue
     visit_queue = [];
+    counter = 0
 
     // initialize search graph as 2D array over configuration space
     //   of 2D locations with specified spatial resolution
@@ -49,20 +50,17 @@ function initSearchGraph() {
             if (G[iind][jind].x - (eps/2) < q_init[0] && q_init[0] <= G[iind][jind].x + (eps/2) && G[iind][jind].y - (eps/2) < q_init[1] && q_init[1] <= G[iind][jind].y + (eps/2)) {
                 G[iind][jind].distance = 0 // distance to start via path through parent
                 G[iind][jind].visited = true // flag for whether the node has been visited
-                G[iind][jind].priority = (0 + hscore(G[iind][jind].x, G[iind][jind].y))
+                if (search_alg == "breadth-first")
+                    G[iind][jind].priority = counter
+                else
+                    G[iind][jind].priority = (0 + hscore(G[iind][jind].x, G[iind][jind].y))
                 G[iind][jind].queued = true
                 minheap_insert(visit_queue, G[iind][jind])
             }
-            
-
-
             // STENCIL: determine whether this graph node should be the start
             //   point for the search
         }
     }
-
-
-
 }
 
 function iterateGraphSearch() {
@@ -159,6 +157,86 @@ function greedy(){
     return "iterating"
 }
 
+/* DFS */
+function dfs(){
+    if (visit_queue.length == 0){
+        return "failed"
+    }
+    cur_node = minheap_extract(visit_queue)
+    cur_node.visited = true
+    cur_node.queued = false
+    search_visited += 1
+    collision_check = testCollision([cur_node.x, cur_node.y])
+    draw_2D_configuration([cur_node.x, cur_node.y], "visited")
+
+    if (collision_check === true)
+        return "failed";
+
+    if (isGoal(cur_node)){
+        drawHighlightedPathGraph(cur_node)
+        search_iterate = false
+        return "succeeded"
+    }
+    cur_node.visited = true
+    for (u = -1; u < 2; u++){
+        for (v = -1; v < 2; v++){
+            if ((u == 0 && v == 0) || Math.abs(u) == Math.abs(v)){
+                continue
+            }
+            ngbr = G[cur_node.i + u][cur_node.j + v]
+            if (ngbr.visited == false && ngbr.distance > (cur_node.distance + eps) && testCollision([ngbr.x,ngbr.y]) == false){
+                ngbr.parent = cur_node
+                ngbr.distance = cur_node.distance + eps
+                ngbr.queued = true
+                ngbr.priority = ngbr.distance + hscore(ngbr.x, ngbr.y)
+                minheap_insert(visit_queue, ngbr)
+                draw_2D_configuration([ngbr.x, ngbr.y], "queued")
+            }
+        }
+    }
+    return "iterating"
+}
+
+/* BFS */
+function bfs(){
+    if (visit_queue.length == 0){
+        return "failed"
+    }
+    cur_node = minheap_extract(visit_queue)
+    cur_node.visited = true
+    cur_node.queued = false
+    search_visited += 1
+    collision_check = testCollision([cur_node.x, cur_node.y])
+    draw_2D_configuration([cur_node.x, cur_node.y], "visited")
+
+    if (collision_check === true)
+        return "failed";
+
+    if (isGoal(cur_node)){
+        drawHighlightedPathGraph(cur_node)
+        search_iterate = false
+        return "succeeded"
+    }
+    cur_node.visited = true
+    for (u = -1; u < 2; u++){
+        for (v = -1; v < 2; v++){
+            if ((u == 0 && v == 0) || Math.abs(u) == Math.abs(v)){
+                continue
+            }
+            ngbr = G[cur_node.i + u][cur_node.j + v]
+            if (ngbr.visited == false && ngbr.distance > (cur_node.distance + eps) && testCollision([ngbr.x,ngbr.y]) == false){
+                ngbr.parent = cur_node
+                ngbr.distance = cur_node.distance + eps
+                ngbr.queued = true
+                ngbr.priority = ++counter
+                minheap_insert(visit_queue, ngbr)
+                draw_2D_configuration([ngbr.x, ngbr.y], "queued")
+            }
+        }
+    }
+    return "iterating"
+}
+
 //////////////////////////////////////////////////
 /////     MIN HEAP IMPLEMENTATION FUNCTIONS
 //////////////////////////////////////////////////
@@ -206,7 +284,6 @@ function heapify(arr, index){
         heapify(arr, largest)
     }
 }
-
 
 function hscore(p1, p2){
     g1 = q_goal[0]
