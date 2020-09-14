@@ -29,7 +29,12 @@ function initSearchGraph() {
 
     // create the search queue
     visit_queue = [];
-    counter = 0
+    counter = 0 // for BFS priority
+
+    // if (testCollision(q_goal) == true || testCollision(q_init) == true){
+    //     search_iterate = false
+    //     return "failed"
+    // }
 
     // initialize search graph as 2D array over configuration space
     //   of 2D locations with specified spatial resolution
@@ -78,6 +83,11 @@ function iterateGraphSearch() {
     //   testCollision - returns whether a given configuration is in collision
     //   drawHighlightedPathGraph - draws a path back to the start location
     //   draw_2D_configuration - draws a square at a given location
+
+    if (testCollision(q_goal) == true || testCollision(q_init) == true){
+        search_iterate = false
+        return "failed"
+    }
 
     if (visit_queue.length == 0){
         return "failed"
@@ -177,7 +187,7 @@ function dfs(){
         search_iterate = false
         return "succeeded"
     }
-    cur_node.visited = true
+    cur_node.visited = true  
     for (u = -1; u < 2; u++){
         for (v = -1; v < 2; v++){
             if ((u == 0 && v == 0) || Math.abs(u) == Math.abs(v)){
@@ -188,7 +198,8 @@ function dfs(){
                 ngbr.parent = cur_node
                 ngbr.distance = cur_node.distance + eps
                 ngbr.queued = true
-                ngbr.priority = ngbr.distance + hscore(ngbr.x, ngbr.y)
+                ngbr.priority = ngbr.distance 
+
                 minheap_insert(visit_queue, ngbr)
                 draw_2D_configuration([ngbr.x, ngbr.y], "queued")
             }
@@ -296,20 +307,17 @@ function hscore(p1, p2){
 }
 
 function isGoal(givennode){
-    if (givennode.x - (eps/2) < q_goal[0] && q_goal[0] <= givennode.x + (eps/2) && givennode.y - (eps/2) < q_goal[1] && q_goal[1] <= givennode.y + (eps/2)){
+    if (givennode.x - (eps/2) < q_goal[0] && q_goal[0] <= givennode.x + (eps/2) && givennode.y - (eps/2) < q_goal[1] && q_goal[1] <= givennode.y + (eps/2))
         return true
-    }
-    else{
+
+    else
         return false
-    }
 }
 
 function manhattan_dist(p,n){
-    if (p.x == n.x || p.y == n.y){
+    if (p.x == n.x || p.y == n.y)
         return eps
-    }
-    else{
+    else
         return 2 * eps
-    }
 }
 
