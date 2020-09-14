@@ -31,10 +31,10 @@ function initSearchGraph() {
     visit_queue = [];
     counter = 0 // for BFS priority
 
-    // if (testCollision(q_goal) == true || testCollision(q_init) == true){
-    //     search_iterate = false
-    //     return "failed"
-    // }
+    if (testCollision(q_goal) == true || testCollision(q_init) == true){
+        search_iterate = false
+        return "failed"
+    }
 
     // initialize search graph as 2D array over configuration space
     //   of 2D locations with specified spatial resolution
@@ -84,7 +84,7 @@ function iterateGraphSearch() {
     //   drawHighlightedPathGraph - draws a path back to the start location
     //   draw_2D_configuration - draws a square at a given location
 
-    if (testCollision(q_goal) == true || testCollision(q_init) == true){
+    if (testCollision(q_goal) == true){
         search_iterate = false
         return "failed"
     }
