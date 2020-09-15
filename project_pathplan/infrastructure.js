@@ -204,8 +204,8 @@ function initSearch() {
     // planning_scene = "empty";
     // planning_scene = "misc";
     // planning_scene = "narrow1";
-    planning_scene = "narrow2";
-    // planning_scene = "three_sections";
+    // planning_scene = "narrow2";
+    planning_scene = "three_sections";
 
     // specify default eps (epsilon) spatial resolution variable
     //   for RRT, specifies threshold radius for step size and reaching goal
