@@ -57,8 +57,8 @@ function initSearchGraph() {
                 G[iind][jind].visited = true // flag for whether the node has been visited
                 if (search_alg == "breadth-first")
                     G[iind][jind].priority = counter
-                else
-                    G[iind][jind].priority = (0 + hscore(G[iind][jind].x, G[iind][jind].y))
+                if (search_alg == "A-star" || search_alg == "greedy-best-first")    
+                    G[iind][jind].priority = (hscore(G[iind][jind].x, G[iind][jind].y))
                 G[iind][jind].queued = true
                 minheap_insert(visit_queue, G[iind][jind])
             }
@@ -67,6 +67,8 @@ function initSearchGraph() {
         }
     }
 }
+
+
 
 function iterateGraphSearch() {
     // STENCIL: implement a single iteration of a graph search algorithm
@@ -84,6 +86,26 @@ function iterateGraphSearch() {
     //   drawHighlightedPathGraph - draws a path back to the start location
     //   draw_2D_configuration - draws a square at a given location
 
+    switch (search_alg) {
+        case "depth-first":
+            search_result = dfs();
+            break;
+        case "breadth-first":
+            search_result = bfs();
+            break;
+        case "greedy-best-first":
+            search_result = greedy();
+            break;
+        case "A-star":
+            search_result = astar();
+            break;
+    }
+    return search_result
+
+}
+
+/* A-star*/
+function astar(){
     if (testCollision(q_goal) == true){
         search_iterate = false
         return "failed"
@@ -172,7 +194,7 @@ function dfs(){
     if (visit_queue.length == 0){
         return "failed"
     }
-    cur_node = minheap_extract(visit_queue)
+    cur_node = visit_queue.pop()
     cur_node.visited = true
     cur_node.queued = false
     search_visited += 1
@@ -200,7 +222,7 @@ function dfs(){
                 ngbr.queued = true
                 ngbr.priority = ngbr.distance 
 
-                minheap_insert(visit_queue, ngbr)
+                visit_queue.push(ngbr)
                 draw_2D_configuration([ngbr.x, ngbr.y], "queued")
             }
         }
