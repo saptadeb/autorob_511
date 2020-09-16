@@ -124,7 +124,7 @@ grade =
         ]
       }, 
       "PathPlan_BestFirst": {
-        "status": "PENDING", 
+        "status": "PASS", 
         "test results": {
           "Test 2": {
             "Status": "Succeed", 
@@ -139,8 +139,8 @@ grade =
             "Stderr": "N/A"
           }, 
           "Test 1": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Wrong result\n"
+            "Status": "Succeed", 
+            "Stderr": "N/A"
           }, 
           "Test 4": {
             "Status": "Succeed", 
@@ -148,7 +148,7 @@ grade =
           }
         }, 
         "comments": [
-          "4 out of 5 test cases passed"
+          "5 out of 5 test cases passed"
         ]
       }, 
       "Pendularm_Euler": {
