@@ -44,8 +44,9 @@
 <h2>II. Methodology</h2>
 
 <p> 
-    The four types of search algorithms implemented are all examples of priority first search, the difference being how the priority of each node is being calculated. 
-    The pre-defined map utilised in the assignment is assumed to be split into grids of 'eps' (0.1) distance. The nodes are expanded only in the 4 directions (out of 8 possible directions). 
+    The four types of search algorithms implemented are all examples of priority first search, the difference being the computation of the priority of each node. 
+    The pre-defined map utilised in the assignment is assumed to be split into grids of 'eps' (0.1) distance. The nodes are expanded only in 4 directions 
+    (out of 8 possible directions), up, down, left and right. 
     The neighbors of the node are then added to a 'visited' list which is sorted based on the priority of the search algorithm. 
 </p>
 
@@ -323,7 +324,10 @@
     A summary of the results are mentioned in Table 1. in which the performance of a search algorithm is evaluated using two parameters, number of search iterations and the 
     computed path length. Breadth-first search and A-star is expected to be optimal which can be corroborated by the path length in each of the planning scenes. But, breadth-first 
     search tends to be more memory expensive than the A-star algorithm, as A-star utilises a heuristic based search which limits the number of nodes being expanded in the search.
-    In case of depth-first search, it can be observed that the number of iterations are significantly lower than the other uninformed search (breadth-first search), but the caveat is a formulation of a sub-optimal/non-optimal path. Whereas in case of greedy-best-first search the path length is observed to be the shortest required length with the lowest number of iterations than the other three search algorithms. Even though the path formulated is the shortest it is not a optimal or complete search algorithm, as it can get trapped in a cycle (for example an obstacle, or a local minima).
+    In case of depth-first search, it can be observed that the number of iterations are significantly lower than the other uninformed search (breadth-first search), but the caveat 
+    is a formulation of a sub-optimal/non-optimal path. Whereas in case of greedy-best-first search the path length is observed to be the shortest required length with the lowest 
+    number of iterations than the other three search algorithms. Even though the path formulated is the shortest it is not a optimal or complete search algorithm, as it can get 
+    trapped in a cycle (for example an obstacle, or a local minima).
 
 </p>
 
