@@ -35,6 +35,9 @@
         else if (grade[student].assignments[feature].status==='CHECK')
           tablestr += "<td style='background:#88ff96'>"; 
           <!--tablestr += "<td style='background:#888888' title="+ grade[student].assignments[feature].comments+">";-->
+        else if (grade[student].assignments[feature].status==='PARTIAL')
+          tablestr += "<td style='background:#F78E09'>"; 
+          <!--tablestr += "<td style='background:#888888' title="+ enrolled[student].assignments[feature].comments+">";-->
         else if (grade[student].assignments[feature].status==='PASS')
           tablestr += "<td style='background:#8888FF'>"; 
           <!--tablestr += "<td style='background:#888888' title="+ grade[student].assignments[feature].comments+">";-->
