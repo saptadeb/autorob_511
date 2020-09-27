@@ -1,4 +1,4 @@
-//CI grader generates report at 27-09-2020-00-42-03
+//CI grader generates report at 27-09-2020-06-06-36
 grade = 
 {
   "saptadeb": {
@@ -185,15 +185,15 @@ grade =
         ]
       }, 
       "Pendularm_PID": {
-        "status": "PASS", 
+        "status": "PENDING", 
         "test results": {
           "Test 0": {
-            "Status": "Succeed", 
-            "Stderr": ""
+            "Status": "Failed", 
+            "Stderr": "[ERROR]: PID test with velocity verlet failed\n"
           }
         }, 
         "comments": [
-          "1 out of 1 test cases passed"
+          "0 out of 1 test cases passed"
         ]
       }, 
       "Pendularm_Verlet": {
