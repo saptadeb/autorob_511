@@ -90,14 +90,16 @@ function init_verlet_integrator(pendulum, t, gravity) {
     // return: updated pendulum state and time
 
     pendulum.angle_previous = pendulum.angle
-    pendulum.angle = pendulum.angle + dt * pendulum.angle_dot + Math.pow(dt, 2) * pendulum_acceleration(pendulum, gravity)
+    pendulum.angle = pendulum.angle + dt * pendulum.angle_dot + Math.pow(dt, 2) * pendulum_acceleration(pendulum, gravity) * 0.5
     t = t + dt
     return [pendulum, t];
 }
 
 function set_PID_parameters(pendulum) {
     // STENCIL: change pid parameters
-    pendulum.servo = {kp:0, kd:0, ki:0};  // no control
+    // pendulum.servo = {kp:0, kd:0, ki:0};  // no control
+    pendulum.servo = {kp:40, kd:6, ki:0.2};  
+
     return pendulum;
 }
 
@@ -106,9 +108,11 @@ function PID(pendulum, accumulated_error, dt) {
     // return: updated output in pendulum.control and accumulated_error
 
     // var gains = pendulum.servo
-    var temp_error = pendulum.desired - pendulum.angle 
-    accumulated_error = accumulated_error + temp_error
-    pendulum.control =  pendulum.servo.kp * temp_error + pendulum.servo.kd * accumulated_error + pendulum.servo.ki * (temp_error/dt)
+    var temp_error_desired = pendulum.desired - pendulum.angle
+    var temp_error_current = pendulum.angle_previous - pendulum.angle 
+
+    accumulated_error = accumulated_error + temp_error_desired
+    pendulum.control = pendulum.servo.kp * temp_error_desired + pendulum.servo.ki * accumulated_error + pendulum.servo.kd * (temp_error_current/dt)
 
     return [pendulum, accumulated_error];
 }
