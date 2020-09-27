@@ -1,4 +1,4 @@
-//CI grader generates report at 26-09-2020-18-06-47
+//CI grader generates report at 27-09-2020-00-07-54
 grade = 
 {
   "saptadeb": {
@@ -153,35 +153,35 @@ grade =
         ]
       }, 
       "Pendularm_Euler": {
-        "status": "PENDING", 
+        "status": "PASS", 
         "test results": {
           "Test 0": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Test failed\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 1": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Test failed\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }
         }, 
         "comments": [
-          "0 out of 2 test cases passed"
+          "2 out of 2 test cases passed"
         ]
       }, 
       "Pendularm_VelocityVerlet": {
-        "status": "PENDING", 
+        "status": "PASS", 
         "test results": {
           "Test 0": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Test failed\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 1": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Test failed\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }
         }, 
         "comments": [
-          "0 out of 2 test cases passed"
+          "2 out of 2 test cases passed"
         ]
       }, 
       "Pendularm_PID": {
@@ -197,35 +197,35 @@ grade =
         ]
       }, 
       "Pendularm_Verlet": {
-        "status": "PENDING", 
+        "status": "PASS", 
         "test results": {
           "Test 0": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Test failed\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 1": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Test failed\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }
         }, 
         "comments": [
-          "0 out of 2 test cases passed"
+          "2 out of 2 test cases passed"
         ]
       }, 
       "Pendularm_RK4": {
-        "status": "PENDING", 
+        "status": "PASS", 
         "test results": {
           "Test 0": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Test failed\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 1": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Test failed\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }
         }, 
         "comments": [
-          "0 out of 2 test cases passed"
+          "2 out of 2 test cases passed"
         ]
       }, 
       "Pendularm_Double": {
