@@ -98,7 +98,8 @@ function init_verlet_integrator(pendulum, t, gravity) {
 function set_PID_parameters(pendulum) {
     // STENCIL: change pid parameters
     // pendulum.servo = {kp:0, kd:0, ki:0};  // no control
-    pendulum.servo = {kp:40, kd:6, ki:0.2};  
+    // pendulum.servo = {kp:40, kd:6, ki:0.2};  
+    pendulum.servo = {kp:500, kd:200, ki:5};  
 
     return pendulum;
 }
