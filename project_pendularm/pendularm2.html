@@ -69,7 +69,7 @@ function init() {
 
     // initialize pendulum controls
     pendulum.control = [0,0];
-    pendulum.desired = [-Math.PI/2.5,Math.PI/2.5];
+    pendulum.desired = [-Math.PI/2.5,-Math.PI/2.5];
 
     // initialize integral term accumulated error to zero
     accumulated_error = [0,0];
@@ -172,7 +172,7 @@ function animate() {
     // disable motor from user interaction 
     if (keyboard.pressed("s")||!servo_active_persist) {
         pendulum.control = [0, 0];
-        accumulated_error = 0;
+        accumulated_error = [0,0];
         servo_active_state = "disabled";
     }
     else
