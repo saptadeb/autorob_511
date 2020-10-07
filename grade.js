@@ -1,4 +1,4 @@
-//CI grader generates report at 07-10-2020-00-47-42
+//CI grader generates report at 07-10-2020-12-07-37
 grade = 
 {
   "saptadeb": {
@@ -255,7 +255,7 @@ grade =
           }, 
           "Test 3": {
             "Status": "Failed", 
-            "Stderr": "Robot sawyer joints transformation undefined\n"
+            "Stderr": "Robot br2 joints transformation undefined\n"
           }, 
           "Test 0": {
             "Status": "Failed", 
@@ -279,7 +279,7 @@ grade =
           }, 
           "Test 5": {
             "Status": "Failed", 
-            "Stderr": "Robot br2 joints transformation undefined\n"
+            "Stderr": "Robot sawyer joints transformation undefined\n"
           }
         }, 
         "comments": [
@@ -301,7 +301,7 @@ grade =
           }, 
           "Test 3": {
             "Status": "Failed", 
-            "Stderr": "Robot sawyer joints transformation undefined\n"
+            "Stderr": "Robot br2 joints transformation undefined\n"
           }, 
           "Test 0": {
             "Status": "Failed", 
@@ -325,7 +325,7 @@ grade =
           }, 
           "Test 5": {
             "Status": "Failed", 
-            "Stderr": "Robot br2 joints transformation undefined\n"
+            "Stderr": "Robot sawyer joints transformation undefined\n"
           }
         }, 
         "comments": [
