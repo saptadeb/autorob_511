@@ -1,4 +1,4 @@
-//CI grader generates report at 29-10-2020-12-08-04
+//CI grader generates report at 29-10-2020-18-08-51
 grade = 
 {
   "saptadeb": {
@@ -235,55 +235,55 @@ grade =
         ]
       }, 
       "FK_MatrixRoutines": {
-        "status": "PENDING", 
+        "status": "PASS", 
         "test results": {
           "Test 0": {
-            "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /saptadeb/FK_MatrixRoutines/test_0.js:232\n            res[j][i] = m[i][j]\n                      ^\n\nTypeError: Cannot set property '0' of undefined\n    at matrix_transpose (/saptadeb/FK_MatrixRoutines/test_0.js:232:23)\n    at test_main (/saptadeb/FK_MatrixRoutines/test_0.js:495:14)\n    at Object.<anonymous> (/saptadeb/FK_MatrixRout"
+            "Status": "Succeed", 
+            "Stderr": ""
           }
         }, 
         "comments": [
-          "0 out of 1 test cases passed"
+          "1 out of 1 test cases passed"
         ]
       }, 
       "FK_Transforms": {
         "status": "PENDING", 
         "test results": {
           "Test 2": {
-            "Status": "Failed", 
-            "Stderr": "Robot crawler joints transformation undefined\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 3": {
-            "Status": "Failed", 
-            "Stderr": "Robot br2 joints transformation undefined\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 0": {
-            "Status": "Failed", 
-            "Stderr": "Robot mr2 joints transformation undefined\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 1": {
-            "Status": "Failed", 
-            "Stderr": "Robot urdf_example joints transformation undefined\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 6": {
             "Status": "Failed", 
-            "Stderr": "Robot fetch joints transformation undefined\n"
+            "Stderr": "Error message too long, print partially: /saptadeb/FK_Transforms/test_6.js:1778\n            temp = vector_dot(temp, robot.joints[curJoint].axis)\n            ^\n\nReferenceError: vector_dot is not defined\n    at traverseFKJoint (/saptadeb/FK_Transforms/test_6.js:1778:13)\n    at Object.buildFKTransforms (/saptadeb/FK_Transforms/test_6.js:1739:9)\n    at Object.robotForwardKinematics (/home/eecs367/ROB511_EECS367/Assi"
           }, 
           "Test 7": {
             "Status": "Failed", 
-            "Stderr": "Robot baxter joints transformation undefined\n"
+            "Stderr": "Error message too long, print partially: /saptadeb/FK_Transforms/test_7.js:1746\n            mJ = kineval.quaternion_to_rotation_matrix(quaternion_normalize(quaternion_from_axisangle(robot.joints[curJoint].axis, robot.joints[curJoint].angle)))\n                         ^\n\nTypeError: kineval.quaternion_to_rotation_matrix is not a function\n    at traverseFKJoint (/saptadeb/FK_Transforms/test_7.js:1746:26)\n    at traverseFKLink (/home/eecs367/ROB511_EECS367/"
           }, 
           "Test 4": {
-            "Status": "Failed", 
-            "Stderr": "Robot y joints transformation undefined\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 5": {
             "Status": "Failed", 
-            "Stderr": "Robot sawyer joints transformation undefined\n"
+            "Stderr": "Error message too long, print partially: /saptadeb/FK_Transforms/test_5.js:1666\n            mJ = kineval.quaternion_to_rotation_matrix(quaternion_normalize(quaternion_from_axisangle(robot.joints[curJoint].axis, robot.joints[curJoint].angle)))\n                         ^\n\nTypeError: kineval.quaternion_to_rotation_matrix is not a function\n    at traverseFKJoint (/saptadeb/FK_Transforms/test_5.js:1666:26)\n    at traverseFKLink (/home/eecs367/ROB511_EECS367/"
           }
         }, 
         "comments": [
-          "0 out of 8 test cases passed"
+          "5 out of 8 test cases passed"
         ]
       }, 
       "FK_JointRendering": {
@@ -296,40 +296,40 @@ grade =
         "status": "PENDING", 
         "test results": {
           "Test 2": {
-            "Status": "Failed", 
-            "Stderr": "Robot crawler joints transformation undefined\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 3": {
-            "Status": "Failed", 
-            "Stderr": "Robot br2 joints transformation undefined\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 0": {
-            "Status": "Failed", 
-            "Stderr": "Robot mr2 joints transformation undefined\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 1": {
-            "Status": "Failed", 
-            "Stderr": "Robot urdf_example joints transformation undefined\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 6": {
             "Status": "Failed", 
-            "Stderr": "Robot fetch joints transformation undefined\n"
+            "Stderr": "Error message too long, print partially: /saptadeb/FK_BaseOffset/test_6.js:1778\n            temp = vector_dot(temp, robot.joints[curJoint].axis)\n            ^\n\nReferenceError: vector_dot is not defined\n    at traverseFKJoint (/saptadeb/FK_BaseOffset/test_6.js:1778:13)\n    at Object.buildFKTransforms (/saptadeb/FK_BaseOffset/test_6.js:1739:9)\n    at Object.robotForwardKinematics (/home/eecs367/ROB511_EECS367/Assi"
           }, 
           "Test 7": {
             "Status": "Failed", 
-            "Stderr": "Robot baxter joints transformation undefined\n"
+            "Stderr": "Error message too long, print partially: /saptadeb/FK_BaseOffset/test_7.js:1746\n            mJ = kineval.quaternion_to_rotation_matrix(quaternion_normalize(quaternion_from_axisangle(robot.joints[curJoint].axis, robot.joints[curJoint].angle)))\n                         ^\n\nTypeError: kineval.quaternion_to_rotation_matrix is not a function\n    at traverseFKJoint (/saptadeb/FK_BaseOffset/test_7.js:1746:26)\n    at traverseFKLink (/home/eecs367/ROB511_EECS367/"
           }, 
           "Test 4": {
-            "Status": "Failed", 
-            "Stderr": "Robot y joints transformation undefined\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 5": {
             "Status": "Failed", 
-            "Stderr": "Robot sawyer joints transformation undefined\n"
+            "Stderr": "Error message too long, print partially: /saptadeb/FK_BaseOffset/test_5.js:1666\n            mJ = kineval.quaternion_to_rotation_matrix(quaternion_normalize(quaternion_from_axisangle(robot.joints[curJoint].axis, robot.joints[curJoint].angle)))\n                         ^\n\nTypeError: kineval.quaternion_to_rotation_matrix is not a function\n    at traverseFKJoint (/saptadeb/FK_BaseOffset/test_5.js:1666:26)\n    at traverseFKLink (/home/eecs367/ROB511_EECS367/"
           }
         }, 
         "comments": [
-          "0 out of 8 test cases passed"
+          "5 out of 8 test cases passed"
         ]
       }, 
       "FK_NewRobot": {
