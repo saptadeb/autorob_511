@@ -1,4 +1,4 @@
-//CI grader generates report at 05-10-2020-12-07-40
+//CI grader generates report at 28-10-2020-18-07-22
 grade = 
 {
   "saptadeb": {
@@ -255,7 +255,7 @@ grade =
           }, 
           "Test 3": {
             "Status": "Failed", 
-            "Stderr": "Robot sawyer joints transformation undefined\n"
+            "Stderr": "Robot br2 joints transformation undefined\n"
           }, 
           "Test 0": {
             "Status": "Failed", 
@@ -279,7 +279,7 @@ grade =
           }, 
           "Test 5": {
             "Status": "Failed", 
-            "Stderr": "Robot br2 joints transformation undefined\n"
+            "Stderr": "Robot sawyer joints transformation undefined\n"
           }
         }, 
         "comments": [
@@ -301,7 +301,7 @@ grade =
           }, 
           "Test 3": {
             "Status": "Failed", 
-            "Stderr": "Robot sawyer joints transformation undefined\n"
+            "Stderr": "Robot br2 joints transformation undefined\n"
           }, 
           "Test 0": {
             "Status": "Failed", 
@@ -325,7 +325,7 @@ grade =
           }, 
           "Test 5": {
             "Status": "Failed", 
-            "Stderr": "Robot br2 joints transformation undefined\n"
+            "Stderr": "Robot sawyer joints transformation undefined\n"
           }
         }, 
         "comments": [
@@ -340,8 +340,14 @@ grade =
       }, 
       "FSMDance_Quaternion": {
         "status": "PENDING", 
+        "test results": {
+          "Test 0": {
+            "Status": "Failed", 
+            "Stderr": "quaternionFromAxisAngle undefined\nquaternionNormalize undefined\nquaternionMultiply undefined\nquaternionToRotationMatrix undefined\nAt least one function undefined\n"
+          }
+        }, 
         "comments": [
-          ""
+          "0 out of 1 test cases passed"
         ]
       }, 
       "FSMDance_BaseControl": {
@@ -352,8 +358,14 @@ grade =
       }, 
       "FSMDance_SetpointControl": {
         "status": "PENDING", 
+        "test results": {
+          "Test 0": {
+            "Status": "Failed", 
+            "Stderr": "[ERROR]: Setpoint control test failed\n"
+          }
+        }, 
         "comments": [
-          ""
+          "0 out of 1 test cases passed"
         ]
       }, 
       "FSMDance_FSM": {
@@ -364,14 +376,26 @@ grade =
       }, 
       "FSMDance_JointLimits": {
         "status": "PENDING", 
+        "test results": {
+          "Test 0": {
+            "Status": "Failed", 
+            "Stderr": "Error message too long, print partially: kineval: control value for r_wheel_joint is a nan\nkineval: control value for l_wheel_joint is a nan\nkineval: control value for upperarm_roll_joint is a nan\nkineval: control value for forearm_roll_joint is a nan\nkineval: control value for wrist_roll_joint is a nan\nkineval: control value for gripper_axis is a nan\nkineval: control value for bellows_joint2 is a nan\nkineval: control value for estop_joint is a nan\nkineval: control value for laser_joint is a nan\nkineval: control value for torso_fixed_j"
+          }
+        }, 
         "comments": [
-          ""
+          "0 out of 1 test cases passed"
         ]
       }, 
       "FSMDance_Prismatic": {
         "status": "PENDING", 
+        "test results": {
+          "Test 0": {
+            "Status": "Failed", 
+            "Stderr": "Error message too long, print partially: kineval: control value for r_wheel_joint is a nan\nkineval: control value for l_wheel_joint is a nan\nkineval: control value for shoulder_pan_joint is a nan\nkineval: control value for shoulder_lift_joint is a nan\nkineval: control value for upperarm_roll_joint is a nan\nkineval: control value for elbow_flex_joint is a nan\nkineval: control value for forearm_roll_joint is a nan\nkineval: control value for wrist_flex_joint is a nan\nkineval: control value for wrist_roll_joint is a nan\nkineval: control va"
+          }
+        }, 
         "comments": [
-          ""
+          "0 out of 1 test cases passed"
         ]
       }, 
       "FSMDance_Rosbridge": {
