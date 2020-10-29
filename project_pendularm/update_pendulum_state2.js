@@ -71,16 +71,19 @@ function update_pendulum_state(numerical_integrator, pendulum, dt, gravity) {
         k2_angle_dot = [k1_angle_dot[0] + a21 * dt * k1_angle_dot_dot[0], k1_angle_dot[1] + a21 * dt * k1_angle_dot_dot[1]]
         k2_angle = [k1_angle[0] + a21 * dt * k1_angle_dot[0], k1_angle[1] + a21 * dt * k1_angle_dot[1]]
         pendulum.angle = [k2_angle[0], k2_angle[1]]
+        // pendulum.angle_dot = [k2_angle_dot[0], k2_angle_dot[1]]
         k2_angle_dot_dot = pendulum_acceleration(pendulum, gravity)
 
         k3_angle_dot = [k1_angle_dot[0] + a32 * dt * k2_angle_dot_dot[0], k1_angle_dot[1] + a32 * dt * k2_angle_dot_dot[1]]
         k3_angle = [k1_angle[0] + a32 * dt * k2_angle_dot[0], k1_angle[1] + a32 * dt * k2_angle_dot[1]]
         pendulum.angle = [k3_angle[0], k3_angle[1]]
+        // pendulum.angle_dot = [k3_angle_dot[0], k3_angle_dot[1]]
         k3_angle_dot_dot = pendulum_acceleration(pendulum, gravity)
 
         k4_angle_dot = [k1_angle_dot[0] + a43 * dt * k3_angle_dot_dot[0], k1_angle_dot[1] + a43 * dt * k3_angle_dot_dot[1]]
         k4_angle = [k1_angle[0] + a43 * dt * k3_angle_dot[0], k1_angle[1] + a43 * dt * k3_angle_dot[1]]
         pendulum.angle = [k4_angle[0], k4_angle[1]]
+        // pendulum.angle_dot = [k3_angle_dot[0], k3_angle_dot[1]]
         k4_angle_dot_dot = pendulum_acceleration(pendulum, gravity)
         sum_angle_dot_dot = [0,0]
         sum_angle_dot = [0,0]
