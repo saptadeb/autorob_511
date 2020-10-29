@@ -1,4 +1,4 @@
-//CI grader generates report at 29-10-2020-06-07-03
+//CI grader generates report at 29-10-2020-12-08-04
 grade = 
 {
   "saptadeb": {
@@ -357,15 +357,15 @@ grade =
         ]
       }, 
       "FSMDance_SetpointControl": {
-        "status": "PASS", 
+        "status": "PENDING", 
         "test results": {
           "Test 0": {
-            "Status": "Succeed", 
-            "Stderr": ""
+            "Status": "Failed", 
+            "Stderr": "[ERROR]: Setpoint control test failed\n"
           }
         }, 
         "comments": [
-          "1 out of 1 test cases passed"
+          "0 out of 1 test cases passed"
         ]
       }, 
       "FSMDance_FSM": {
