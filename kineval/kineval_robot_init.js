@@ -33,6 +33,31 @@ kineval.initRobotLinks = function initRobotLinks() {
     robot.control = {xyz: [0,0,0], rpy:[0,0,0]}; 
 }
 
+kineval.initRobotJoints = function initRobotJoints() {
+    var x
+
+    for (x in robot.joints) {
+        robot.joints[x].name = x
+        robot.joints[x].angle = 0
+        robot.joints[x].control = 0
+        robot.joints[x].servo = {}
+        robot.joints[x].servo.p_gain = 0 
+        robot.joints[x].servo.p_desired = 0
+        robot.joints[x].servo.d_gain = 0
+
+    var tempParent = robot.joints[x].parent
+    var tempChild = robot.joints[x].child
+    if (typeof robot.links[tempParent].children === 'undefined'){
+            robot.links[tempParent].children=[]
+        }
+        robot.links[tempChild].parent = x
+        robot.links[tempParent].children.push(x)    
+    }
+    timeStart = new Date()
+}
+
+
+
 
 
 
