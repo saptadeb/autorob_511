@@ -1,4 +1,4 @@
-//CI grader generates report at 29-10-2020-00-10-42
+//CI grader generates report at 29-10-2020-06-07-03
 grade = 
 {
   "saptadeb": {
@@ -239,7 +239,7 @@ grade =
         "test results": {
           "Test 0": {
             "Status": "Failed", 
-            "Stderr": "matrix_multiply undefined\nmatrix_transpose undefined\nvector_normalize undefined\nvector_cross undefined\ngenerate_identity undefined\ngenerate_translation_matrix undefined\ngenerate_rotation_matrix_X undefined\ngenerate_rotation_matrix_Y undefined\ngenerate_rotation_matrix_Z undefined\nAt least one function undefined\n"
+            "Stderr": "Error message too long, print partially: /saptadeb/FK_MatrixRoutines/test_0.js:232\n            res[j][i] = m[i][j]\n                      ^\n\nTypeError: Cannot set property '0' of undefined\n    at matrix_transpose (/saptadeb/FK_MatrixRoutines/test_0.js:232:23)\n    at test_main (/saptadeb/FK_MatrixRoutines/test_0.js:495:14)\n    at Object.<anonymous> (/saptadeb/FK_MatrixRout"
           }
         }, 
         "comments": [
@@ -357,15 +357,15 @@ grade =
         ]
       }, 
       "FSMDance_SetpointControl": {
-        "status": "PENDING", 
+        "status": "PASS", 
         "test results": {
           "Test 0": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Setpoint control test failed\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }
         }, 
         "comments": [
-          "0 out of 1 test cases passed"
+          "1 out of 1 test cases passed"
         ]
       }, 
       "FSMDance_FSM": {
