@@ -59,9 +59,13 @@ function matrix_transpose(m) {
     // returns 2D array transpose
 
     var res = new Array(m.length)    // creating a placeholder
+    
+    for (i = 0; i < m[0].length; i++){
+        res[i] = [];
+    }
 
     for (i = 0; i < m.length; i++){
-        res[i] = new Array(m[0].length)
+        // res[i] = new Array(m[0].length)
         for (j = 0; j < m[0].length; j++){
             res[j][i] = m[i][j]
         }
@@ -154,7 +158,7 @@ function generate_translation_matrix(tx, ty, tz) {
 
     temp[0][3] = tx
     temp[1][3] = ty
-    temp[1][3] = tz
+    temp[2][3] = tz
 
     return temp
 }
@@ -173,21 +177,30 @@ function generate_rotation_matrix_X(angle) {
 function generate_rotation_matrix_Y(angle) {
     // returns 4-by-4 matrix as a 2D array, angle is in radians
     
-    var temp = generate_identity();
-    temp[0][0] = Math.cos(angle);
-    temp[2][2] = Math.cos(angle);
-    temp[0][2] = Math.sin(angle);
-    temp[2][0] = - Math.sin(angle);
-    return temp; 
+    var temp = generate_identity()
+    temp[0][0] = Math.cos(angle)
+    temp[2][2] = Math.cos(angle)
+    temp[0][2] = Math.sin(angle)
+    temp[2][0] = - Math.sin(angle)
+    return temp
 }
 
 function generate_rotation_matrix_Z(angle) {
     // returns 4-by-4 matrix as a 2D array, angle is in radians
     
-    var temp = generate_identity();
-    temp[0][0] = Math.cos(angle);
-    temp[1][1] = Math.cos(angle);
-    temp[0][1] = - Math.sin(angle);
-    temp[1][0] = Math.sin(angle);
-    return temp; 
+    var temp = generate_identity()
+    temp[0][0] = Math.cos(angle)
+    temp[1][1] = Math.cos(angle)
+    temp[0][1] = - Math.sin(angle)
+    temp[1][0] = Math.sin(angle)
+    return temp
+}
+
+// extra functions
+
+function generate_rotation_matrix (r,p,y){
+    var m = matrix_multiply (generate_rotation_matrix_Z( y ), generate_rotation_matrix_Y( p ) );
+    m = matrix_multiply (m, generate_rotation_matrix_X( r ) );
+    return m
+
 }
