@@ -19,14 +19,16 @@
 kineval.setpointDanceSequence = function execute_setpoints() {
 
     // if update not requested, exit routine
-    if (!kineval.params.update_pd_dance) return; 
+    if (!kineval.params.update_pd_dance) return;
+    //kineval.params.persist_pd = true;
 
+    var temp = 0;
     // STENCIL: implement FSM to cycle through dance pose setpoints
     for(x in robot.joints){
         kineval.params.setpoint_target[x] = kineval.setpoints[kineval.params.dance_pose_index][x];
-        sum += Math.pow((kineval.params.setpoint_target[x]-robot.joints[x].angle), 2);
+        temp += Math.pow((kineval.params.setpoint_target[x]-robot.joints[x].angle), 2);
     }
-    var root = Math.sqrt(sum);
+    var root = Math.sqrt(temp);
 
     if(root >= 0.01)
         return;

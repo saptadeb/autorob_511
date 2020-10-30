@@ -45,7 +45,7 @@ kineval.quaternionMultiply = function quaternion_multiply(q1,q2) {
 
 kineval.quaternionToRotationMatrix = function quaternion_to_rotation_matrix(q) {
     // returns 4-by-4 2D rotation matrix
-    var m = generate_identity()
+    var m = generate_identityNew()
     m[0][0] = q[0] * q[0] + q[1] * q[1] - q[2] * q[2] - q[3] * q[3]
     m[0][1] = 2 * (q[1]*q[2] - q[0]*q[3])
     m[0][2] = 2 * (q[0]*q[2] + q[1]*q[3])
@@ -56,4 +56,22 @@ kineval.quaternionToRotationMatrix = function quaternion_to_rotation_matrix(q) {
     m[2][1] = 2 * (q[1]*q[0] + q[2]*q[3])
     m[2][2] = q[0] * q[0] - q[1] * q[1] - q[2] * q[2] + q[3] * q[3]
     return m 
+}
+
+function generate_identityNew() {
+    // returns 4-by-4 2D array of identity matrix
+    var res = new Array(4)
+    for (i = 0; i < 4; i++){
+        res[i] = new Array(4)
+        for (j = 0; j < 4; j++){
+            if (i != j){
+                res[i][j] = 0
+            }
+            else{
+                res[i][j] = 1
+            }
+        }
+    }
+    return res;
+
 }
