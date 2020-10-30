@@ -22,6 +22,22 @@ kineval.setpointDanceSequence = function execute_setpoints() {
     if (!kineval.params.update_pd_dance) return; 
 
     // STENCIL: implement FSM to cycle through dance pose setpoints
+    for(x in robot.joints){
+        kineval.params.setpoint_target[x] = kineval.setpoints[kineval.params.dance_pose_index][x];
+        sum += Math.pow((kineval.params.setpoint_target[x]-robot.joints[x].angle), 2);
+    }
+    var root = Math.sqrt(sum);
+
+    if(root >= 0.01)
+        return;
+
+    kineval.params.dance_pose_index += 1;
+
+    if(kineval.params.dance_pose_index == 10)
+        kineval.params.dance_pose_index = 0;
+
+
+    kineval.setPoseSetpoint(kineval.params.dance_pose_index);
 }
 
 kineval.setpointClockMovement = function execute_clock() {
@@ -45,9 +61,9 @@ kineval.robotArmControllerSetpoint = function robot_pd_control () {
 
     // STENCIL: implement P servo controller over joints
     for (k in robot.joints) {
-        var temp = kineval.params.setpoint_target[k]-robot.joints[k].angle;
-        temp = temp*robot.joints[k].servo.p_gain;
-        robot.joints[k].control = temp;
+        var temp = kineval.params.setpoint_target[k]-robot.joints[k].angle
+        temp = temp*robot.joints[k].servo.p_gain
+        robot.joints[k].control = temp
     }
 
 }

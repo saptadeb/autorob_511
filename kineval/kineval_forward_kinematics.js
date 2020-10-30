@@ -74,14 +74,14 @@ function traverseFKJoint(curJoint) {
             mJ = generate_translation_matrix(temp[0],temp[1],temp[2])
         }
         else if ((robot.joints[curJoint].type === "continuous")|(robot.joints[curJoint].type === "revolute")){
-            mJ = quaternion_to_rotation_matrix(quaternion_normalize(quaternion_from_axisangle(robot.joints[curJoint].axis, robot.joints[curJoint].angle)))
+            mJ = kineval.quaternionToRotationMatrix(kineval.quaternionNormalize(kineval.quaternionFromAxisAngle(robot.joints[curJoint].axis, robot.joints[curJoint].angle)))
         }
         else{
-            mJ = generate_identity(4);
+            mJ = generate_identity();
         }
     }
     else{
-        mJ = quaternion_to_rotation_matrix(quaternion_normalize(quaternion_from_axisangle(robot.joints[curJoint].axis, robot.joints[curJoint].angle))) 
+        mJ = kineval.quaternionToRotationMatrix(kineval.quaternionNormalize(kineval.quaternionFromAxisAngle(robot.joints[curJoint].axis, robot.joints[curJoint].angle))) 
     }
     var tempTrans = matrix_multiply(robot.links[robot.joints[curJoint].parent].xform, matrix_multiply(transM, rotM))
     robot.joints[curJoint].xform = matrix_multiply(tempTrans, mJ);
