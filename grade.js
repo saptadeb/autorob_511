@@ -1,4 +1,4 @@
-//CI grader generates report at 29-10-2020-18-08-51
+//CI grader generates report at 30-10-2020-00-08-53
 grade = 
 {
   "saptadeb": {
@@ -247,7 +247,7 @@ grade =
         ]
       }, 
       "FK_Transforms": {
-        "status": "PENDING", 
+        "status": "PASS", 
         "test results": {
           "Test 2": {
             "Status": "Succeed", 
@@ -266,24 +266,24 @@ grade =
             "Stderr": ""
           }, 
           "Test 6": {
-            "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /saptadeb/FK_Transforms/test_6.js:1778\n            temp = vector_dot(temp, robot.joints[curJoint].axis)\n            ^\n\nReferenceError: vector_dot is not defined\n    at traverseFKJoint (/saptadeb/FK_Transforms/test_6.js:1778:13)\n    at Object.buildFKTransforms (/saptadeb/FK_Transforms/test_6.js:1739:9)\n    at Object.robotForwardKinematics (/home/eecs367/ROB511_EECS367/Assi"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 7": {
-            "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /saptadeb/FK_Transforms/test_7.js:1746\n            mJ = kineval.quaternion_to_rotation_matrix(quaternion_normalize(quaternion_from_axisangle(robot.joints[curJoint].axis, robot.joints[curJoint].angle)))\n                         ^\n\nTypeError: kineval.quaternion_to_rotation_matrix is not a function\n    at traverseFKJoint (/saptadeb/FK_Transforms/test_7.js:1746:26)\n    at traverseFKLink (/home/eecs367/ROB511_EECS367/"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 4": {
             "Status": "Succeed", 
             "Stderr": ""
           }, 
           "Test 5": {
-            "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /saptadeb/FK_Transforms/test_5.js:1666\n            mJ = kineval.quaternion_to_rotation_matrix(quaternion_normalize(quaternion_from_axisangle(robot.joints[curJoint].axis, robot.joints[curJoint].angle)))\n                         ^\n\nTypeError: kineval.quaternion_to_rotation_matrix is not a function\n    at traverseFKJoint (/saptadeb/FK_Transforms/test_5.js:1666:26)\n    at traverseFKLink (/home/eecs367/ROB511_EECS367/"
+            "Status": "Succeed", 
+            "Stderr": ""
           }
         }, 
         "comments": [
-          "5 out of 8 test cases passed"
+          "8 out of 8 test cases passed"
         ]
       }, 
       "FK_JointRendering": {
@@ -293,7 +293,7 @@ grade =
         ]
       }, 
       "FK_BaseOffset": {
-        "status": "PENDING", 
+        "status": "PASS", 
         "test results": {
           "Test 2": {
             "Status": "Succeed", 
@@ -312,24 +312,24 @@ grade =
             "Stderr": ""
           }, 
           "Test 6": {
-            "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /saptadeb/FK_BaseOffset/test_6.js:1778\n            temp = vector_dot(temp, robot.joints[curJoint].axis)\n            ^\n\nReferenceError: vector_dot is not defined\n    at traverseFKJoint (/saptadeb/FK_BaseOffset/test_6.js:1778:13)\n    at Object.buildFKTransforms (/saptadeb/FK_BaseOffset/test_6.js:1739:9)\n    at Object.robotForwardKinematics (/home/eecs367/ROB511_EECS367/Assi"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 7": {
-            "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /saptadeb/FK_BaseOffset/test_7.js:1746\n            mJ = kineval.quaternion_to_rotation_matrix(quaternion_normalize(quaternion_from_axisangle(robot.joints[curJoint].axis, robot.joints[curJoint].angle)))\n                         ^\n\nTypeError: kineval.quaternion_to_rotation_matrix is not a function\n    at traverseFKJoint (/saptadeb/FK_BaseOffset/test_7.js:1746:26)\n    at traverseFKLink (/home/eecs367/ROB511_EECS367/"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 4": {
             "Status": "Succeed", 
             "Stderr": ""
           }, 
           "Test 5": {
-            "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /saptadeb/FK_BaseOffset/test_5.js:1666\n            mJ = kineval.quaternion_to_rotation_matrix(quaternion_normalize(quaternion_from_axisangle(robot.joints[curJoint].axis, robot.joints[curJoint].angle)))\n                         ^\n\nTypeError: kineval.quaternion_to_rotation_matrix is not a function\n    at traverseFKJoint (/saptadeb/FK_BaseOffset/test_5.js:1666:26)\n    at traverseFKLink (/home/eecs367/ROB511_EECS367/"
+            "Status": "Succeed", 
+            "Stderr": ""
           }
         }, 
         "comments": [
-          "5 out of 8 test cases passed"
+          "8 out of 8 test cases passed"
         ]
       }, 
       "FK_NewRobot": {
@@ -357,15 +357,15 @@ grade =
         ]
       }, 
       "FSMDance_SetpointControl": {
-        "status": "PENDING", 
+        "status": "PASS", 
         "test results": {
           "Test 0": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Setpoint control test failed\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }
         }, 
         "comments": [
-          "0 out of 1 test cases passed"
+          "1 out of 1 test cases passed"
         ]
       }, 
       "FSMDance_FSM": {
@@ -375,27 +375,27 @@ grade =
         ]
       }, 
       "FSMDance_JointLimits": {
-        "status": "PENDING", 
+        "status": "PASS", 
         "test results": {
           "Test 0": {
-            "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: kineval: control value for r_wheel_joint is a nan\nkineval: control value for l_wheel_joint is a nan\nkineval: control value for upperarm_roll_joint is a nan\nkineval: control value for forearm_roll_joint is a nan\nkineval: control value for wrist_roll_joint is a nan\nkineval: control value for gripper_axis is a nan\nkineval: control value for bellows_joint2 is a nan\nkineval: control value for estop_joint is a nan\nkineval: control value for laser_joint is a nan\nkineval: control value for torso_fixed_j"
+            "Status": "Succeed", 
+            "Stderr": ""
           }
         }, 
         "comments": [
-          "0 out of 1 test cases passed"
+          "1 out of 1 test cases passed"
         ]
       }, 
       "FSMDance_Prismatic": {
-        "status": "PENDING", 
+        "status": "PASS", 
         "test results": {
           "Test 0": {
-            "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: kineval: control value for r_wheel_joint is a nan\nkineval: control value for l_wheel_joint is a nan\nkineval: control value for shoulder_pan_joint is a nan\nkineval: control value for shoulder_lift_joint is a nan\nkineval: control value for upperarm_roll_joint is a nan\nkineval: control value for elbow_flex_joint is a nan\nkineval: control value for forearm_roll_joint is a nan\nkineval: control value for wrist_flex_joint is a nan\nkineval: control value for wrist_roll_joint is a nan\nkineval: control va"
+            "Status": "Succeed", 
+            "Stderr": ""
           }
         }, 
         "comments": [
-          "0 out of 1 test cases passed"
+          "1 out of 1 test cases passed"
         ]
       }, 
       "FSMDance_Rosbridge": {
