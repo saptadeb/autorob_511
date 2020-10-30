@@ -204,3 +204,13 @@ function generate_rotation_matrix (r,p,y){
     return m
 
 }
+
+function vector_dot(v1,v2){
+    var v = new Array(v1.length);
+    for (i=0;i<v1.length;++i){
+        
+        v[i]=v1[i]*v2[i];
+        
+    }
+    return v;
+}
