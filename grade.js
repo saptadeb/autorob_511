@@ -1,4 +1,4 @@
-//CI grader generates report at 31-10-2020-12-08-16
+//CI grader generates report at 01-11-2020-00-29-30
 grade = 
 {
   "saptadeb": {
@@ -406,26 +406,74 @@ grade =
       }, 
       "IK_Jacobian": {
         "status": "PENDING", 
+        "test results": {
+          "Test 0": {
+            "Status": "Failed", 
+            "Stderr": "robot.jacobian not defined, please check whether you have assigned value for robot.jacobian\n"
+          }, 
+          "Test 1": {
+            "Status": "Failed", 
+            "Stderr": "robot.jacobian not defined, please check whether you have assigned value for robot.jacobian\n"
+          }
+        }, 
         "comments": [
-          ""
+          "0 out of 2 test cases passed"
         ]
       }, 
       "IK_JTranspose": {
         "status": "PENDING", 
+        "test results": {
+          "Test 2": {
+            "Status": "Failed", 
+            "Stderr": "Target not reached\n"
+          }, 
+          "Test 0": {
+            "Status": "Failed", 
+            "Stderr": "robot.dq not defined, please check whether you have assigned value for robot.dq\n"
+          }, 
+          "Test 1": {
+            "Status": "Failed", 
+            "Stderr": "robot.dq not defined, please check whether you have assigned value for robot.dq\n"
+          }
+        }, 
         "comments": [
-          ""
+          "0 out of 3 test cases passed"
         ]
       }, 
       "IK_JPseudoInverse": {
         "status": "PENDING", 
+        "test results": {
+          "Test 2": {
+            "Status": "Failed", 
+            "Stderr": "Target not reached\n"
+          }, 
+          "Test 0": {
+            "Status": "Failed", 
+            "Stderr": "robot.dq not defined, please check whether you have assigned value for robot.dq\n"
+          }, 
+          "Test 1": {
+            "Status": "Failed", 
+            "Stderr": "robot.dq not defined, please check whether you have assigned value for robot.dq\n"
+          }
+        }, 
         "comments": [
-          ""
+          "0 out of 3 test cases passed"
         ]
       }, 
       "IK_EulerAngles": {
         "status": "PENDING", 
+        "test results": {
+          "Test 0": {
+            "Status": "Failed", 
+            "Stderr": "robot.dx not defined, please check whether you have assigned value for robot.dx\n"
+          }, 
+          "Test 1": {
+            "Status": "Failed", 
+            "Stderr": "robot.dx not defined, please check whether you have assigned value for robot.dx\n"
+          }
+        }, 
         "comments": [
-          ""
+          "0 out of 2 test cases passed"
         ]
       }, 
       "MotionPlan_Collision": {
