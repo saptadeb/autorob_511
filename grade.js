@@ -1,4 +1,4 @@
-//CI grader generates report at 03-11-2020-00-24-30
+//CI grader generates report at 04-11-2020-00-10-43
 grade = 
 {
   "saptadeb": {
@@ -235,7 +235,7 @@ grade =
         ]
       }, 
       "FK_MatrixRoutines": {
-        "status": "PASS", 
+        "status": "CHECK", 
         "test results": {
           "Test 0": {
             "Status": "Succeed", 
@@ -243,11 +243,11 @@ grade =
           }
         }, 
         "comments": [
-          "1 out of 1 test cases passed"
+          "Point: 2/2, due day check pass, good work!"
         ]
       }, 
       "FK_Transforms": {
-        "status": "PASS", 
+        "status": "CHECK", 
         "test results": {
           "Test 2": {
             "Status": "Succeed", 
@@ -283,17 +283,17 @@ grade =
           }
         }, 
         "comments": [
-          "8 out of 8 test cases passed"
+          "Point: 8/8, due day check pass, good work!"
         ]
       }, 
       "FK_JointRendering": {
-        "status": "PENDING", 
+        "status": "CHECK", 
         "comments": [
-          ""
+          "Point: 2/2, due day check pass, good work!"
         ]
       }, 
       "FK_BaseOffset": {
-        "status": "PASS", 
+        "status": "CHECK", 
         "test results": {
           "Test 2": {
             "Status": "Succeed", 
@@ -329,17 +329,17 @@ grade =
           }
         }, 
         "comments": [
-          "8 out of 8 test cases passed"
+          "Point: 2/2, due day check pass, good work!"
         ]
       }, 
       "FK_NewRobot": {
-        "status": "PENDING", 
+        "status": "CHECK", 
         "comments": [
-          ""
+          "Point: 4/4, due day check pass, nice robot!"
         ]
       }, 
       "FSMDance_Quaternion": {
-        "status": "PASS", 
+        "status": "CHECK", 
         "test results": {
           "Test 0": {
             "Status": "Succeed", 
@@ -347,17 +347,17 @@ grade =
           }
         }, 
         "comments": [
-          "1 out of 1 test cases passed"
+          "Point: 6/6, due day check pass, good work!"
         ]
       }, 
       "FSMDance_BaseControl": {
-        "status": "PENDING", 
+        "status": "CHECK", 
         "comments": [
-          ""
+          "Point: 2/2, due day check pass, good work!"
         ]
       }, 
       "FSMDance_SetpointControl": {
-        "status": "PASS", 
+        "status": "CHECK", 
         "test results": {
           "Test 0": {
             "Status": "Succeed", 
@@ -365,17 +365,17 @@ grade =
           }
         }, 
         "comments": [
-          "1 out of 1 test cases passed"
+          "Point: 2/2, due day check pass, good work!"
         ]
       }, 
       "FSMDance_FSM": {
-        "status": "PENDING", 
+        "status": "DUE", 
         "comments": [
-          ""
+          "Point: 0/2, cannot find dance implementation or implementation incorrect, we will still give partial points if you complete after due day"
         ]
       }, 
       "FSMDance_JointLimits": {
-        "status": "PASS", 
+        "status": "CHECK", 
         "test results": {
           "Test 0": {
             "Status": "Succeed", 
@@ -383,11 +383,11 @@ grade =
           }
         }, 
         "comments": [
-          "1 out of 1 test cases passed"
+          "Point: 2/2, due day check pass, good work!"
         ]
       }, 
       "FSMDance_Prismatic": {
-        "status": "PASS", 
+        "status": "CHECK", 
         "test results": {
           "Test 0": {
             "Status": "Succeed", 
@@ -395,7 +395,7 @@ grade =
           }
         }, 
         "comments": [
-          "1 out of 1 test cases passed"
+          "Point: 2/2, due day check pass, good work!"
         ]
       }, 
       "FSMDance_Rosbridge": {
@@ -527,7 +527,7 @@ grade =
         "status": 4.0
       }, 
       {
-        "status": "PENDING"
+        "status": 4.0
       }, 
       {
         "status": "PENDING"
