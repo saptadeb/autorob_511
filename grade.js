@@ -1,4 +1,4 @@
-//CI grader generates report at 04-11-2020-12-09-36
+//CI grader generates report at 05-11-2020-00-15-59
 grade = 
 {
   "saptadeb": {
@@ -369,9 +369,9 @@ grade =
         ]
       }, 
       "FSMDance_FSM": {
-        "status": "DUE", 
+        "status": "CHECK", 
         "comments": [
-          "Point: 0/2, cannot find dance implementation or implementation incorrect, we will still give partial points if you complete after due day"
+          "Point: 2/2, due day check pass, good work!"
         ]
       }, 
       "FSMDance_JointLimits": {
