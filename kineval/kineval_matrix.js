@@ -74,11 +74,22 @@ function matrix_transpose(m) {
 
 }
 
-// function matrix_pseudoinverse(m) {
-//     // returns pseudoinverse of matrix m
-
-
-// }
+function matrix_pseudoinverse(m) {
+    // returns pseudoinverse of matrix m
+    var res = [];
+    var m_trans = matrix_transpose(m);
+    
+    if (m.length == m[0].length){
+        res = numeric.inv(m);
+    } else if (m.length > m[0].length){
+        var temp = matrix_multiply(m_trans,m);
+        res = matrix_multiply(numeric.inv(temp), m_trans);
+    } else{
+        var temp = matrix_multiply(m,m_trans);
+        res = matrix_multiply(m_trans, numeric.inv(temp));
+    }
+    return res;
+}
 
 function matrix_invert_affine(m) {
     // returns 2D array that is the invert affine of 4-by-4 matrix m
