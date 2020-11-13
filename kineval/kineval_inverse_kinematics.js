@@ -73,86 +73,64 @@ kineval.iterateIK = function iterate_inverse_kinematics(endeffector_target_world
     // robot.dq = T(robot.jacobian) * robot.dx  // where T(robot.jacobian) means apply some transformations to the Jacobian matrix, it could be Transpose, PseudoInverse, etc.
     // dtheta = alpha * robot.dq   // alpha: step length
 
-
+    var endeRPYWorld = rotation_matrix_to_axisangle(robot.joints[endeffector_joint].xform);
     var endeXYZWorld = matrix_multiply(robot.joints[endeffector_joint].xform, endeffector_position_local);
-    var endeRPYWorld = xformTransTheta(robot.joints[endeffector_joint].xform);
-    var endeVec = [];
-    var i;
-    for (i = 0; i< 3; i++){
-        endeVec[i] = [endeXYZWorld[i][0]];
-        endeVec[i+3] = [endeRPYWorld[i][0]];
-    }
+    var delta_position = vec_minus(endeffector_target_world.position, endeXYZWorld);
+    var delta_orientation = vec_minus(endeffector_target_world.orientation, endeRPYWorld);
+
     robot.dx = [];
-    for (i = 0; i< 3; i++){
-        robot.dx[i] = [endeffector_target_world.position[i] - endeVec[i][0]];
-    }
-    for (i = 3; i< 6; i++){
-        if (kineval.params.ik_orientation_included){
-            robot.dx[i] = [endeffector_target_world.orientation[i-3] - endeVec[i][0]];
-        }
-        else{
-            robot.dx[i] = [0];
+    for (i = 0; i < 3; i++) {
+        robot.dx[i] = [delta_position[i]];
+        if (kineval.params.ik_orientation_included) {
+            robot.dx[i + 3] = [delta_orientation[i]];
+        } else {
+            robot.dx[i + 3] = [0];
         }
     }
 
+    var joint_chain = [];
+    var curr_joint = endeffector_joint;
+    while (robot.joints[curr_joint].parent !== robot.base) {
+        joint_chain.push(curr_joint);
+        curr_joint = robot.links[robot.joints[curr_joint].parent].parent;
+    }
+    joint_chain.push(curr_joint);
 
-    robot.jacobian = [];
-    var indexJoint = 0;
-    var curJoint = endeffector_joint;
-    
+    robot.jacobian = [[], [], [], [], [], []]; 
 
-    
-    var flagWhile = true;
-    while (flagWhile){
-        var tempAxis = matrix_vec_multiply(robot.joints[curJoint].xform,robot.joints[curJoint].axis)
-         tempAxis = vector_normalize(tempAxis);
-         if (robot.joints[curJoint].type === "prismatic"){
-             robot.jacobian[indexJoint] = [tempAxis[0], tempAxis[1], tempAxis[2], 0, 0, 0];
-         }else{
-             var jointXYZWorld = matrix_multiply(robot.joints[curJoint].xform, [[0],[0],[0],[1]]);
-             var diffJointXYZ = vec_minus(endeXYZWorld,jointXYZWorld);
-             var tempC = vector_cross(tempAxis, diffJointXYZ);
-             robot.jacobian[indexJoint] = [tempC[0], tempC[1], tempC[2], tempAxis[0], tempAxis[1], tempAxis[2]];
-         }
-         if (robot.joints[curJoint].parent === robot.base){
-             flagWhile = false;
-         }
-         indexJoint++;
-         curJoint = robot.links[robot.joints[curJoint].parent].parent;
-     }
-     robot.dq = [];
-     if (!kineval.params.ik_pseudoinverse){
-         robot.dq = matrix_multiply(robot.jacobian, robot.dx);
-     }
-     else{
-         var jacobT = matrix_transpose(robot.jacobian);
-         robot.dq = matrix_multiply(matrix_pseudoinverse(jacobT), robot.dx);
-     
-     }
-     flagWhile = true;
-     indexJoint = 0;
-     curJoint = endeffector_joint;
-     while (flagWhile){
-         robot.joints[curJoint].control += kineval.params.ik_steplength*robot.dq[indexJoint][0];
-         indexJoint++;
-         if (robot.joints[curJoint].parent === robot.base){
-             flagWhile = false;
-         }
-         curJoint = robot.links[robot.joints[curJoint].parent].parent;
-     }
+    for (var i = 0; i < joint_chain.length; i++) {
+        // var j = joint_chain.length - i - 1;
+        var joint = robot.joints[joint_chain[i]];
+        var joint_origin_world = matrix_multiply(joint.xform, [[0], [0], [0], [1]]);
 
-}
+        var axis_local = [[joint.axis[0]], [joint.axis[1]], [joint.axis[2]], [0]];
+        var axis_world = matrix_multiply(joint.xform, axis_local);
 
-function xformTransTheta(xform){
-    
-    var theta1=[Math.atan2( xform[2][1], xform[2][2])];
-    var theta3=[Math.atan2( xform[1][0], xform[0][0])];
-    var temp = Math.pow(xform[2][1], 2)+ Math.pow(xform[2][2], 2);
-    temp = Math.pow(temp,0.5);
-    var theta2=[Math.atan2(-xform[2][0],temp)];
-    
-    var theta = [theta1,theta2,theta3];
-    return theta;
+        var J_cross = vector_cross(axis_world, vec_minus(endeXYZWorld, joint_origin_world));
+        for (var k = 0; k < 3; k++) {
+            if (joint.type === 'prismatic') {
+                robot.jacobian[k][i] = axis_world[k][0];
+                robot.jacobian[k + 3][i] = 0;
+            } else {
+                robot.jacobian[k][i] = J_cross[k];
+                robot.jacobian[k + 3][i] = axis_world[k][0];
+            }
+        }
+    }
+
+    // robot.dq;
+    if (kineval.params.ik_pseudoinverse) {
+        var pseudoinverse = matrix_pseudoinverse(robot.jacobian);
+        robot.dq = matrix_multiply(pseudoinverse, robot.dx);
+    } else {
+        robot.dq = matrix_multiply(matrix_transpose(robot.jacobian), robot.dx);
+    }
+
+    for (i = 0; i < joint_chain.length; i++) {
+        robot.joints[joint_chain[i]].control += kineval.params.ik_steplength * robot.dq[i][0];
+    }
+
+
 }
 
 
