@@ -1,4 +1,4 @@
-//CI grader generates report at 12-11-2020-17-53-21
+//CI grader generates report at 13-11-2020-07-54-22
 grade = 
 {
   "saptadeb": {
@@ -409,11 +409,11 @@ grade =
         "test results": {
           "Test 0": {
             "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /saptadeb/IK_Jacobian/test_0.js:1738\n        var tempAxis = matrix_vec_multiply(robot.joints[curJoint].xform,robot.joints[curJoint].axis)\n                       ^\n\nReferenceError: matrix_vec_multiply is not defined\n    at Object.iterate_inverse_kinematics [as iterateIK] (/saptadeb/IK_Jacobian/test_0.js:1738:24)\n    at Object.robot_inverse_kinematics [as robotInverseKinematics] (/home/eecs367/ROB511_EECS367/Assign"
+            "Stderr": "[ERROR]: Incorrect IK Jacobian for test 0\n"
           }, 
           "Test 1": {
             "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /saptadeb/IK_Jacobian/test_1.js:1738\n        var tempAxis = matrix_vec_multiply(robot.joints[curJoint].xform,robot.joints[curJoint].axis)\n                       ^\n\nReferenceError: matrix_vec_multiply is not defined\n    at Object.iterate_inverse_kinematics [as iterateIK] (/saptadeb/IK_Jacobian/test_1.js:1738:24)\n    at Object.robot_inverse_kinematics [as robotInverseKinematics] (/home/eecs367/ROB511_EECS367/Assign"
+            "Stderr": "[ERROR]: Incorrect IK Jacobian for test 1\n"
           }
         }, 
         "comments": [
@@ -424,56 +424,56 @@ grade =
         "status": "PENDING", 
         "test results": {
           "Test 2": {
-            "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /saptadeb/IK_JTranspose/test_2.js:1744\n        var tempAxis = matrix_vec_multiply(robot.joints[curJoint].xform,robot.joints[curJoint].axis)\n                       ^\n\nReferenceError: matrix_vec_multiply is not defined\n    at Object.iterate_inverse_kinematics [as iterateIK] (/saptadeb/IK_JTranspose/test_2.js:1744:24)\n    at Object.robot_inverse_kinematics [as robotInverseKinematics] (/home/eecs367/ROB511_EECS367/As"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 0": {
             "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /saptadeb/IK_JTranspose/test_0.js:1744\n        var tempAxis = matrix_vec_multiply(robot.joints[curJoint].xform,robot.joints[curJoint].axis)\n                       ^\n\nReferenceError: matrix_vec_multiply is not defined\n    at Object.iterate_inverse_kinematics [as iterateIK] (/saptadeb/IK_JTranspose/test_0.js:1744:24)\n    at Object.robot_inverse_kinematics [as robotInverseKinematics] (/home/eecs367/ROB511_EECS367/As"
+            "Stderr": "[ERROR]: IK_JTranspose test 0 failed\n"
           }, 
           "Test 1": {
             "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /saptadeb/IK_JTranspose/test_1.js:1744\n        var tempAxis = matrix_vec_multiply(robot.joints[curJoint].xform,robot.joints[curJoint].axis)\n                       ^\n\nReferenceError: matrix_vec_multiply is not defined\n    at Object.iterate_inverse_kinematics [as iterateIK] (/saptadeb/IK_JTranspose/test_1.js:1744:24)\n    at Object.robot_inverse_kinematics [as robotInverseKinematics] (/home/eecs367/ROB511_EECS367/As"
+            "Stderr": "[ERROR]: IK_JTranspose test 1 failed\n"
           }
         }, 
         "comments": [
-          "0 out of 3 test cases passed"
+          "1 out of 3 test cases passed"
         ]
       }, 
       "IK_JPseudoInverse": {
         "status": "PENDING", 
         "test results": {
           "Test 2": {
-            "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /saptadeb/IK_JPseudoInverse/test_2.js:1744\n        var tempAxis = matrix_vec_multiply(robot.joints[curJoint].xform,robot.joints[curJoint].axis)\n                       ^\n\nReferenceError: matrix_vec_multiply is not defined\n    at Object.iterate_inverse_kinematics [as iterateIK] (/saptadeb/IK_JPseudoInverse/test_2.js:1744:24)\n    at Object.robot_inverse_kinematics [as robotInverseKinematics] (/home/eecs367/ROB511_EE"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 0": {
             "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /saptadeb/IK_JPseudoInverse/test_0.js:1744\n        var tempAxis = matrix_vec_multiply(robot.joints[curJoint].xform,robot.joints[curJoint].axis)\n                       ^\n\nReferenceError: matrix_vec_multiply is not defined\n    at Object.iterate_inverse_kinematics [as iterateIK] (/saptadeb/IK_JPseudoInverse/test_0.js:1744:24)\n    at Object.robot_inverse_kinematics [as robotInverseKinematics] (/home/eecs367/ROB511_EE"
+            "Stderr": "[\n  [ 1.25, 0, 0, 0 ],\n  [ 0, 2.4399999999999995, 2.3189599999999992, -3.459999999999999 ],\n  [ 0, 2.3189599999999992, 2.804152889999999, -3.460764999999999 ],\n  [ 0, -3.459999999999999, -3.460764999999999, 5.2025 ]\n]\n[ERROR]: IK_JPseudoInverse test 0 failed\n"
           }, 
           "Test 1": {
             "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /saptadeb/IK_JPseudoInverse/test_1.js:1744\n        var tempAxis = matrix_vec_multiply(robot.joints[curJoint].xform,robot.joints[curJoint].axis)\n                       ^\n\nReferenceError: matrix_vec_multiply is not defined\n    at Object.iterate_inverse_kinematics [as iterateIK] (/saptadeb/IK_JPseudoInverse/test_1.js:1744:24)\n    at Object.robot_inverse_kinematics [as robotInverseKinematics] (/home/eecs367/ROB511_EE"
+            "Stderr": "[\n  [ 1.25, 0, 0, 0 ],\n  [ 0, 2.4399999999999995, 2.3189599999999992, -3.459999999999999 ],\n  [ 0, 2.3189599999999992, 2.804152889999999, -3.460764999999999 ],\n  [ 0, -3.459999999999999, -3.460764999999999, 5.2025 ]\n]\n[ERROR]: IK_JPseudoInverse test 1 failed\n"
           }
         }, 
         "comments": [
-          "0 out of 3 test cases passed"
+          "1 out of 3 test cases passed"
         ]
       }, 
       "IK_EulerAngles": {
-        "status": "PENDING", 
+        "status": "PASS", 
         "test results": {
           "Test 0": {
-            "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /saptadeb/IK_EulerAngles/test_0.js:1738\n        var tempAxis = matrix_vec_multiply(robot.joints[curJoint].xform,robot.joints[curJoint].axis)\n                       ^\n\nReferenceError: matrix_vec_multiply is not defined\n    at Object.iterate_inverse_kinematics [as iterateIK] (/saptadeb/IK_EulerAngles/test_0.js:1738:24)\n    at Object.robot_inverse_kinematics [as robotInverseKinematics] (/home/eecs367/ROB511_EECS367/"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 1": {
-            "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /saptadeb/IK_EulerAngles/test_1.js:1738\n        var tempAxis = matrix_vec_multiply(robot.joints[curJoint].xform,robot.joints[curJoint].axis)\n                       ^\n\nReferenceError: matrix_vec_multiply is not defined\n    at Object.iterate_inverse_kinematics [as iterateIK] (/saptadeb/IK_EulerAngles/test_1.js:1738:24)\n    at Object.robot_inverse_kinematics [as robotInverseKinematics] (/home/eecs367/ROB511_EECS367/"
+            "Status": "Succeed", 
+            "Stderr": ""
           }
         }, 
         "comments": [
-          "0 out of 2 test cases passed"
+          "2 out of 2 test cases passed"
         ]
       }, 
       "MotionPlan_Collision": {
