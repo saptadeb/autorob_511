@@ -1,4 +1,4 @@
-//CI grader generates report at 17-11-2020-18-05-08
+//CI grader generates report at 18-11-2020-00-06-14
 grade = 
 {
   "saptadeb": {
@@ -405,59 +405,59 @@ grade =
         ]
       }, 
       "IK_Jacobian": {
-        "status": "PENDING", 
+        "status": "PASS", 
         "test results": {
           "Test 0": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Incorrect IK Jacobian for test 0\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 1": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Incorrect IK Jacobian for test 1\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }
         }, 
         "comments": [
-          "0 out of 2 test cases passed"
+          "2 out of 2 test cases passed"
         ]
       }, 
       "IK_JTranspose": {
-        "status": "PENDING", 
+        "status": "PASS", 
         "test results": {
           "Test 2": {
             "Status": "Succeed", 
             "Stderr": ""
           }, 
           "Test 0": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: IK_JTranspose test 0 failed\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 1": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: IK_JTranspose test 1 failed\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }
         }, 
         "comments": [
-          "1 out of 3 test cases passed"
+          "3 out of 3 test cases passed"
         ]
       }, 
       "IK_JPseudoInverse": {
-        "status": "PENDING", 
+        "status": "PASS", 
         "test results": {
           "Test 2": {
             "Status": "Succeed", 
             "Stderr": ""
           }, 
           "Test 0": {
-            "Status": "Failed", 
-            "Stderr": "[\n  [ 1.25, 0, 0, 0 ],\n  [ 0, 2.4399999999999995, 2.3189599999999992, -3.459999999999999 ],\n  [ 0, 2.3189599999999992, 2.804152889999999, -3.460764999999999 ],\n  [ 0, -3.459999999999999, -3.460764999999999, 5.2025 ]\n]\n[ERROR]: IK_JPseudoInverse test 0 failed\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 1": {
-            "Status": "Failed", 
-            "Stderr": "[\n  [ 1.25, 0, 0, 0 ],\n  [ 0, 2.4399999999999995, 2.3189599999999992, -3.459999999999999 ],\n  [ 0, 2.3189599999999992, 2.804152889999999, -3.460764999999999 ],\n  [ 0, -3.459999999999999, -3.460764999999999, 5.2025 ]\n]\n[ERROR]: IK_JPseudoInverse test 1 failed\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }
         }, 
         "comments": [
-          "1 out of 3 test cases passed"
+          "3 out of 3 test cases passed"
         ]
       }, 
       "IK_EulerAngles": {
