@@ -79,18 +79,17 @@ function matrix_pseudoinverse(m) {
     var res = [];
     var m_trans = matrix_transpose(m);
     
-
     if (m.length == m[0].length){
         res = numeric.inv(m);
     } else if (m.length > m[0].length){
+        // console.log(m.length, m[0].length)
         // console.log(m_trans.length, m_trans[0].length,m.length,m[0].length)
         var temp = matrix_multiply(m_trans,m);
-        console.log(temp)
+        // console.log(temp)
         // console.log(numeric.inv(temp))
         res = matrix_multiply(numeric.inv(temp), m_trans);
-        
-
     } else{
+        // console.log(m.length, m[0].length)
         var temp = matrix_multiply(m,m_trans);
         res = matrix_multiply(m_trans, numeric.inv(temp));
     }
@@ -222,26 +221,12 @@ function generate_rotation_matrix (r,p,y){
 }
 
 function rotation_matrix_to_axisangle(R) {
-    var R00 = R[0][0], R01 = R[0][1], R02 = R[0][2];
-    var R10 = R[1][0], R11 = R[1][1], R12 = R[1][2];
-    var R20 = R[2][0], R21 = R[2][1], R22 = R[2][2];
-
     var thetaX, thetaY, thetaZ;
-    if (R02 < 1) {
-        if (R02 > -1) {
-            thetaY = Math.asin(R02);
-            thetaX = Math.atan2(-R12, R22);
-            thetaZ = Math.atan2(-R01, R00);
-        } else {
-            thetaY = -Math.PI / 2;
-            thetaX = -Math.atan2(R10, R11);
-            thetaZ = 0;
-        }
-    } else {
-        thetaY = Math.PI / 2;
-        thetaX = Math.atan2(R10, R11);
-        thetaZ = 0;
-    }
+
+    thetaX = Math.atan2(R[2][1], R[2][2]);
+    thetaZ = Math.atan2(R[1][0], R[0][0]);
+    thetaY = Math.atan2(-R[2][0],Math.pow(Math.pow(R[2][1], 2)+ Math.pow(R[2][2], 2), 0.5));
+
     return [thetaX, thetaY, thetaZ];
 }
 
@@ -285,3 +270,11 @@ function vec_minus(v1,v2) {
     return res;
 }
 
+function rev_vec(vec) {
+    var res = [];
+    var n = vec.length;
+    for (var i = n - 1; i>=0; i--) {
+        res[n-1-i] = vec[i];
+    }
+    return res;
+}
