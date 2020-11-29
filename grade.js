@@ -1,4 +1,4 @@
-//CI grader generates report at 28-11-2020-13-15-48
+//CI grader generates report at 29-11-2020-01-15-39
 grade = 
 {
   "saptadeb": {
@@ -480,20 +480,20 @@ grade =
         "status": "PENDING", 
         "test results": {
           "Test 2": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Collision test 2 failed\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 0": {
             "Status": "Failed", 
-            "Stderr": "[ERROR]: Collision test 0 failed\n"
+            "Stderr": "Error message too long, print partially: /saptadeb/MotionPlan_Collision/test_0.js:975\n            local_collision = traverse_collision_forward_kinematics_joint(robot.joints[link.children[i]],mstack,q)\n            ^\n\nReferenceError: traverse_collision_forward_kinematics_joint is not defined\n    at traverse_collision_forward_kinematics_link (/saptadeb/MotionPlan_Collision/test_0.js:975:13)\n    at robot_collision_forward_kinematics (/home/eecs367/ROB511_EE"
           }, 
           "Test 1": {
             "Status": "Failed", 
-            "Stderr": "[ERROR]: Collision test 1 failed\n"
+            "Stderr": "Error message too long, print partially: /saptadeb/MotionPlan_Collision/test_1.js:975\n            local_collision = traverse_collision_forward_kinematics_joint(robot.joints[link.children[i]],mstack,q)\n            ^\n\nReferenceError: traverse_collision_forward_kinematics_joint is not defined\n    at traverse_collision_forward_kinematics_link (/saptadeb/MotionPlan_Collision/test_1.js:975:13)\n    at robot_collision_forward_kinematics (/home/eecs367/ROB511_EE"
           }
         }, 
         "comments": [
-          "0 out of 3 test cases passed"
+          "1 out of 3 test cases passed"
         ]
       }, 
       "MotionPlan_2DRRTConnect": {
@@ -501,19 +501,19 @@ grade =
         "test results": {
           "Test 2": {
             "Status": "Failed", 
-            "Stderr": "[ERROR]: Search time out\n"
+            "Stderr": "Error message too long, print partially: /saptadeb/MotionPlan_2DRRTConnect/test_2.js:427\n    RRT_connect_flag = !RRT_connect_flag;\n    ^\n\nReferenceError: RRT_connect_flag is not defined\n    at iterateRRTConnect (/saptadeb/MotionPlan_2DRRTConnect/test_2.js:427:5)\n    at Timeout.animate [as _onTimeout] (/saptadeb/MotionPlan_2DRRTConnect/test_2.js:153:22)\n    at listOnTimeout (internal/timers.js:549:17)\n    at proc"
           }, 
           "Test 3": {
             "Status": "Failed", 
-            "Stderr": "[ERROR]: Search time out\n"
+            "Stderr": "Error message too long, print partially: /saptadeb/MotionPlan_2DRRTConnect/test_3.js:427\n    RRT_connect_flag = !RRT_connect_flag;\n    ^\n\nReferenceError: RRT_connect_flag is not defined\n    at iterateRRTConnect (/saptadeb/MotionPlan_2DRRTConnect/test_3.js:427:5)\n    at Timeout.animate [as _onTimeout] (/saptadeb/MotionPlan_2DRRTConnect/test_3.js:153:22)\n    at listOnTimeout (internal/timers.js:549:17)\n    at proc"
           }, 
           "Test 0": {
             "Status": "Failed", 
-            "Stderr": "[ERROR]: Search time out\n"
+            "Stderr": "Error message too long, print partially: /saptadeb/MotionPlan_2DRRTConnect/test_0.js:427\n    RRT_connect_flag = !RRT_connect_flag;\n    ^\n\nReferenceError: RRT_connect_flag is not defined\n    at iterateRRTConnect (/saptadeb/MotionPlan_2DRRTConnect/test_0.js:427:5)\n    at animate (/saptadeb/MotionPlan_2DRRTConnect/test_0.js:153:22)\n    at init (/saptadeb/MotionPlan_2DRRTCon"
           }, 
           "Test 1": {
             "Status": "Failed", 
-            "Stderr": "[ERROR]: Search time out\n"
+            "Stderr": "Error message too long, print partially: /saptadeb/MotionPlan_2DRRTConnect/test_1.js:427\n    RRT_connect_flag = !RRT_connect_flag;\n    ^\n\nReferenceError: RRT_connect_flag is not defined\n    at iterateRRTConnect (/saptadeb/MotionPlan_2DRRTConnect/test_1.js:427:5)\n    at Timeout.animate [as _onTimeout] (/saptadeb/MotionPlan_2DRRTConnect/test_1.js:153:22)\n    at listOnTimeout (internal/timers.js:549:17)\n    at proc"
           }
         }, 
         "comments": [
