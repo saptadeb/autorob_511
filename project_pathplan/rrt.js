@@ -59,6 +59,36 @@ function iterateRRTConnect() {
     //   insertTreeVertex - adds and displays new configuration vertex for a tree
     //   insertTreeEdge - adds and displays new tree edge between configurations
     //   drawHighlightedPath - renders a highlighted path in a tree
+
+    if (search_iter_count > search_max_iterations) {
+        search_iterate = false;
+        return "failed";
+    }
+
+    var q_random = randomConfig();
+    extendRRT(T_a, q_random);
+    var status = extendRRT(T_b, T_a.vertices[T_a.newest].vertex);
+    search_iter_count++;
+    if (status === "reached") {
+        search_iterate = false;
+        var path_a = dfsPath(T_a);
+        var path_b = dfsPath(T_b);
+        path_length = T_a.vertices[T_a.newest].path + T_b.vertices[T_b.newest].path;
+        var path = [];
+        if (RRT_connect_flag) {
+            path = path_a.concat(path_b.reverse());
+        } else {
+            path = path_b.concat(path_a.reverse());
+        }
+        drawHighlightedPath(path);
+        return "succeeded";
+    }
+    var tmp = T_a;
+    T_a = T_b;
+    T_b = tmp;
+    RRT_connect_flag = !RRT_connect_flag;
+
+    return "extended";
 }
 
 function iterateRRTStar() {
@@ -76,3 +106,107 @@ function iterateRRTStar() {
     //   newConfig
     //   findNearestNeighbor
     //   dfsPath
+
+function randomConfig() {
+    var minX = range[0][1][1];
+    var maxX = range[1][1][0];
+
+    var randX = minX + (maxX - minX) * Math.random();
+    var randY = minX + (maxX - minX) * Math.random();
+    return [randX, randY];
+}
+
+function extendRRT(T, q) {
+    var nearestIdx = findNearestNeighbor(T, q);
+    var nearestVertex = T.vertices[nearestIdx].vertex;
+    var newVertex = [];
+    for (var i = 0; i < 2; i++) {
+        newVertex[i] = (q[i] - nearestVertex[i]) * eps / distance(q, nearestVertex) + nearestVertex[i];
+    }
+
+    if (!testCollision(newVertex)) {
+        var idx = insertTreeVertex(T, newVertex);
+        insertTreeEdge(T, T.vertices.length - 1, nearestIdx);
+
+        if (distance(newVertex, q) < eps) {
+            insertTreeVertex(T, q);
+            insertTreeEdge(T, T.vertices.length - 1, idx);
+            return "reached";
+        } else {
+            return "iterating";
+        }
+    }
+    return "collided";
+}
+
+function extendRRTStar(T, q) {
+    var nearestIdx = findNearestNeighbor(T, q);
+    var nearestVertex = T.vertices[nearestIdx].vertex;
+    var newVertex = [];
+    for (var i = 0; i < 2; i++) {
+        newVertex[i] = (q[i] - nearestVertex[i]) * eps / distance(q, nearestVertex) + nearestVertex[i];
+    }
+
+    if (!testCollision(newVertex)) {
+        var neighbors = [];
+        var idx = insertTreeVertex(T, newVertex);
+        insertTreeEdge(T, T.vertices.length - 1, nearestIdx);
+
+        if (distance(newVertex, q) < eps) {
+            insertTreeVertex(T, q);
+            insertTreeEdge(T, T.vertices.length - 1, idx);
+            return "reached";
+        } else {
+            return "iterating";
+        }
+    }
+    return "collided";
+}
+
+function findNearestNeighbor(T, q) {
+    var dist = null;
+    var minDist = Number.MAX_VALUE;
+    var minIdx = null;
+
+    for (var i = 0; i < T.vertices.length; i++) {
+        dist = distance(T.vertices[i].vertex, q);
+        if (dist < minDist) {
+            minDist = dist;
+            minIdx = i;
+        }
+    }
+
+    return minIdx;
+}
+
+function distance(q1, q2) {
+    return Math.sqrt(Math.pow(q1[0] - q2[0], 2) + Math.pow(q1[1] - q2[1], 2));
+}
+
+function dfsPath(T) {
+    var path = [];
+    var currVertex = T.vertices[T.newest];
+
+    while (!isEqualNode(currVertex.vertex, T.vertices[0].vertex)) {
+        path.unshift(currVertex);
+        currVertex = currVertex.edges[0];
+    }
+    path.unshift(currVertex);
+    return path;
+}
+
+function isEqualNode(q1, q2) {
+    return hashcode(q1) === hashcode(q2);
+}
+
+function hashcode(q) {
+    var hash1 = q[0].toFixed(1);
+    var hash2 = q[1].toFixed(1);
+    if (hash1 === '-0.0') {
+        hash1 = '0.0';
+    }
+    if (hash2 === '-0.0') {
+        hash2 = '0.0';
+    }
+    return hash1 + ' ' + hash2;
+}
