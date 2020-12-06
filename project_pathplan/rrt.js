@@ -99,7 +99,24 @@ function iterateRRTConnect() {
 }
 
 function iterateRRTStar() {
+    if (search_iter_count > search_max_iterations) {
+        search_iterate = false;
+        return "failed";
+    }
 
+    var prob_goal = 0.2;
+    var isSearchingGoal = Math.random() < prob_goal;
+    var q_random = isSearchingGoal ? q_goal : randomConfig();
+
+    if (extendRRTStar(T_a, q_random) === "reached" && isSearchingGoal) {
+        search_iterate = false;
+        var path = dfsPath(T_a);
+        path_length = T_a.vertices[T_a.newest].path;
+        drawHighlightedPath(path);
+        return "succeeded";
+    }
+
+    return "extended";
 }
 
 //////////////////////////////////////////////////
@@ -114,7 +131,22 @@ function iterateRRTStar() {
     //   findNearestNeighbor
     //   dfsPath
 
+function rewrite(neighbors, newVertex) {
+    for (var i = 0; i < neighbors.length; i++) {
+        var parent = neighbors[i].edges[0];
+        if (typeof(parent) === 'undefined') {
+            continue;
+        }
 
+        var cost = newVertex.path + distance(newVertex.vertex, neighbors[i].vertex);
+        if (cost < neighbors[i].path) {
+            neighbors[i].edges[0] = newVertex;
+            newVertex.edges.push(neighbors[i]);
+            neighbors[i].path = cost;
+            parent.edges.splice(parent.edges.indexOf(neighbors[i]), 1);
+        }
+    }
+}
 
 function connectRRT(T, q) {
     var status = 'advanced';
@@ -135,6 +167,7 @@ function randomConfig() {
 
 function extendRRT(T, q) {
     var nearestIdx = findNearestNeighbor(T, q);
+    // console.log(nearestIdx)
     var nearestVertex = T.vertices[nearestIdx].vertex;
     var newVertex = [];
     for (var i = 0; i < 2; i++) {
@@ -158,6 +191,7 @@ function extendRRT(T, q) {
 
 
 function extendRRTStar(T, q) {
+    search_iter_count++;
     var nearestIdx = findNearestNeighbor(T, q);
     var nearestVertex = T.vertices[nearestIdx].vertex;
     var newVertex = [];
@@ -167,15 +201,51 @@ function extendRRTStar(T, q) {
 
     if (!testCollision(newVertex)) {
         var neighbors = [];
+
+        for (i = 0; i < T.vertices.length; i++) {
+            var dist = distance(newVertex, T.vertices[i].vertex);
+            if (dist <= eps) {
+                neighbors.push(T.vertices[i]);
+            }
+        }
+
+        var cost = null;
+        var minCost = Number.MAX_VALUE;
+        var minIdx = null;
+
+        for (i = 0; i < neighbors.length; i++) {
+            if (typeof(neighbors[i].path) === 'undefined'){
+                temp = 0
+            }
+            else{
+                temp = neighbors[i].path
+            }
+            cost = distance(newVertex, neighbors[i].vertex) + temp;
+            // console.log(cost)
+            if (cost < minCost) {
+                minCost = cost;
+                minIdx = i;
+            }
+        }
+
+        var parentIdx = T.vertices.indexOf(neighbors[minIdx]);
         var idx = insertTreeVertex(T, newVertex);
-        insertTreeEdge(T, T.vertices.length - 1, nearestIdx);
+
+        // jugaad
+        if (parentIdx == -1){
+            parentIdx = 0
+        }
+
+        // console.log(parentIdx)
+        insertTreeEdge(T, T.vertices.length - 1, parentIdx);
+        rewrite(neighbors, T.vertices[idx]);
 
         if (distance(newVertex, q) < eps) {
             insertTreeVertex(T, q);
             insertTreeEdge(T, T.vertices.length - 1, idx);
             return "reached";
         } else {
-            return "iterating";
+            return "advanced";
         }
     }
     return "collided";

@@ -72,6 +72,9 @@ function initRRT(q) {
     tree.vertices[0].vertex = q;
     tree.vertices[0].edges = [];
 
+    // added for rrt-star
+    tree.vertices[0].path = 0;
+
     // maintain index of newest vertex added to tree
     tree.newest = 0;
 
@@ -91,6 +94,8 @@ function insertTreeVertex(tree,q) {
 
     // draw location on canvas
     draw_2D_configuration(q, "visited");
+
+    return tree.newest;
 }
 
 
@@ -101,6 +106,10 @@ function insertTreeEdge(tree,q1_idx,q2_idx) {
 
     // add edge to second vertex as pointer to first vertex
     tree.vertices[q2_idx].edges.push(tree.vertices[q1_idx]);
+
+    // for rrt-star
+    tree.vertices[q1_idx].path = distance(tree.vertices[q1_idx].vertex, tree.vertices[q2_idx].vertex)
+        + tree.vertices[q2_idx].path;
 
     // draw edge on canvas
     draw_2D_edge_configurations(tree.vertices[q1_idx].vertex,tree.vertices[q2_idx].vertex);
