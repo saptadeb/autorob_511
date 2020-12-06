@@ -125,6 +125,14 @@ kineval.robotRRTPlannerInit = function robot_rrt_planner_init() {
 
     // make sure the rrt iterations are not running faster than animation update
     cur_time = Date.now();
+
+    T_a = tree_init(q_start_config);
+    T_b = tree_init(q_goal_config);
+    RRT_connect_flag = true;
+    step = 0.4;
+    radius = 2 * step;
+    angle_scale = 0.1;
+    threshold_goal = 0.7;
 }
 
 
@@ -292,8 +300,8 @@ function tree_add_edge(tree,q1_idx,q2_idx) {
             tree_add_edge(T, T.vertices.length - 1, nearestIdx);
     
             if (distance(newVertexConf, q) < step) {
-                tree_add_vertex(T, q);
-                tree_add_edge(T, T.vertices.length - 1, idx);
+                // tree_add_vertex(T, q);
+                // tree_add_edge(T, T.vertices.length - 1, idx);
                 return "reached";
             } else {
                 return "advanced";
@@ -333,6 +341,12 @@ function tree_add_edge(tree,q1_idx,q2_idx) {
             }
         }
         return q_rand;
+        // var minX = range[0][1][1];
+        // var maxX = range[1][1][0];
+
+        // var randX = minX + (maxX - minX) * Math.random();
+        // var randY = minX + (maxX - minX) * Math.random();
+        // return [randX, randY];
     }
 
     function new_config(q_from, q_to) {
