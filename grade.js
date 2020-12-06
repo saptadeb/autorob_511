@@ -1,4 +1,4 @@
-//CI grader generates report at 05-12-2020-19-06-38
+//CI grader generates report at 06-12-2020-01-06-11
 grade = 
 {
   "saptadeb": {
@@ -497,27 +497,27 @@ grade =
         ]
       }, 
       "MotionPlan_2DRRTConnect": {
-        "status": "PENDING", 
+        "status": "PASS", 
         "test results": {
           "Test 2": {
-            "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /saptadeb/MotionPlan_2DRRTConnect/test_2.js:427\n    RRT_connect_flag = !RRT_connect_flag;\n    ^\n\nReferenceError: RRT_connect_flag is not defined\n    at iterateRRTConnect (/saptadeb/MotionPlan_2DRRTConnect/test_2.js:427:5)\n    at Timeout.animate [as _onTimeout] (/saptadeb/MotionPlan_2DRRTConnect/test_2.js:153:22)\n    at listOnTimeout (internal/timers.js:549:17)\n    at proc"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 3": {
-            "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /saptadeb/MotionPlan_2DRRTConnect/test_3.js:427\n    RRT_connect_flag = !RRT_connect_flag;\n    ^\n\nReferenceError: RRT_connect_flag is not defined\n    at iterateRRTConnect (/saptadeb/MotionPlan_2DRRTConnect/test_3.js:427:5)\n    at Timeout.animate [as _onTimeout] (/saptadeb/MotionPlan_2DRRTConnect/test_3.js:153:22)\n    at listOnTimeout (internal/timers.js:549:17)\n    at proc"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 0": {
-            "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /saptadeb/MotionPlan_2DRRTConnect/test_0.js:427\n    RRT_connect_flag = !RRT_connect_flag;\n    ^\n\nReferenceError: RRT_connect_flag is not defined\n    at iterateRRTConnect (/saptadeb/MotionPlan_2DRRTConnect/test_0.js:427:5)\n    at Timeout.animate [as _onTimeout] (/saptadeb/MotionPlan_2DRRTConnect/test_0.js:153:22)\n    at listOnTimeout (internal/timers.js:549:17)\n    at proc"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 1": {
-            "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /saptadeb/MotionPlan_2DRRTConnect/test_1.js:427\n    RRT_connect_flag = !RRT_connect_flag;\n    ^\n\nReferenceError: RRT_connect_flag is not defined\n    at iterateRRTConnect (/saptadeb/MotionPlan_2DRRTConnect/test_1.js:427:5)\n    at Timeout.animate [as _onTimeout] (/saptadeb/MotionPlan_2DRRTConnect/test_1.js:153:22)\n    at listOnTimeout (internal/timers.js:549:17)\n    at proc"
+            "Status": "Succeed", 
+            "Stderr": ""
           }
         }, 
         "comments": [
-          "0 out of 4 test cases passed"
+          "4 out of 4 test cases passed"
         ]
       }, 
       "MotionPlan_CSpaceRRTConnect": {
