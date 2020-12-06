@@ -40,6 +40,8 @@ function iterateRRT() {
     //   insertTreeVertex - adds and displays new configuration vertex for a tree
     //   insertTreeEdge - adds and displays new tree edge between configurations
     //   drawHighlightedPath - renders a highlighted path in a tree
+
+
 }
 
 function iterateRRTConnect() {
@@ -65,24 +67,29 @@ function iterateRRTConnect() {
         return "failed";
     }
 
-    var q_random = randomConfig();
-    extendRRT(T_a, q_random);
-    var status = extendRRT(T_b, T_a.vertices[T_a.newest].vertex);
-    search_iter_count++;
-    if (status === "reached") {
-        search_iterate = false;
-        var path_a = dfsPath(T_a);
-        var path_b = dfsPath(T_b);
-        path_length = T_a.vertices[T_a.newest].path + T_b.vertices[T_b.newest].path;
-        var path = [];
-        if (RRT_connect_flag) {
-            path = path_a.concat(path_b.reverse());
-        } else {
-            path = path_b.concat(path_a.reverse());
-        }
-        drawHighlightedPath(path);
-        return "succeeded";
+    if (search_iter_count == 1){
+        RRT_connect_flag = true
     }
+
+    var q_random = randomConfig();
+
+    if (extendRRT(T_a, q_random) !== 'collided') {
+        if (connectRRT(T_b, T_a.vertices[T_a.newest].vertex) === "reached") {
+            search_iterate = false;
+            var path_a = dfsPath(T_a);
+            var path_b = dfsPath(T_b);
+            path_length = T_a.vertices[T_a.newest].path + T_b.vertices[T_b.newest].path;
+            var path = [];
+            if (RRT_connect_flag) {
+                path = path_a.concat(path_b.reverse());
+            } else {
+                path = path_b.concat(path_a.reverse());
+            }
+            drawHighlightedPath(path);
+            return "succeeded";
+        }
+    }
+
     var tmp = T_a;
     T_a = T_b;
     T_b = tmp;
@@ -107,6 +114,16 @@ function iterateRRTStar() {
     //   findNearestNeighbor
     //   dfsPath
 
+
+
+function connectRRT(T, q) {
+    var status = 'advanced';
+    while (status === 'advanced') {
+        status = extendRRT(T, q);
+    }
+    return status;
+}
+
 function randomConfig() {
     var minX = range[0][1][1];
     var maxX = range[1][1][0];
@@ -129,8 +146,8 @@ function extendRRT(T, q) {
         insertTreeEdge(T, T.vertices.length - 1, nearestIdx);
 
         if (distance(newVertex, q) < eps) {
-            insertTreeVertex(T, q);
-            insertTreeEdge(T, T.vertices.length - 1, idx);
+            // insertTreeVertex(T, q);
+            // insertTreeEdge(T, T.vertices.length - 1, idx);
             return "reached";
         } else {
             return "iterating";
@@ -138,6 +155,7 @@ function extendRRT(T, q) {
     }
     return "collided";
 }
+
 
 function extendRRTStar(T, q) {
     var nearestIdx = findNearestNeighbor(T, q);
@@ -163,6 +181,19 @@ function extendRRTStar(T, q) {
     return "collided";
 }
 
+function newConfig(q_rand, q_near){
+    var q_new = [];
+    var q_distance = distance(q_rand, q_near);
+    for(var i=0; i<q_rand.length; i++){
+        q_new.push(q_near[i] + eps/q_distance*(q_rand[i] - q_near[i]));
+    }
+
+    if(testCollision(q_new)){
+        return false;
+    }
+    return q_new;
+}
+
 function findNearestNeighbor(T, q) {
     var dist = null;
     var minDist = Number.MAX_VALUE;
@@ -179,8 +210,12 @@ function findNearestNeighbor(T, q) {
     return minIdx;
 }
 
-function distance(q1, q2) {
-    return Math.sqrt(Math.pow(q1[0] - q2[0], 2) + Math.pow(q1[1] - q2[1], 2));
+function distance(q1, q2){
+    var square_sum = 0;
+    for(var i=0; i<q1.length; i++){
+        square_sum += Math.pow((q1[i]-q2[i]),2);
+    }
+    return Math.pow(square_sum, 0.5);
 }
 
 function dfsPath(T) {

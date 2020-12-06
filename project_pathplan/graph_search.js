@@ -99,6 +99,16 @@ function iterateGraphSearch() {
         case "A-star":
             search_result = astar();
             break;
+        case "RRT":
+            search_result = iterateRRT();
+            break;
+        case "RRT-connect":
+            search_result = iterateRRTConnect();
+            RRT_connect_flag = true;
+            break;
+        case "RRT-star":
+            search_result = iterateRRTStar();
+            break;
     }
     return search_result
 
