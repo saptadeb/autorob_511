@@ -440,8 +440,8 @@ function tree_add_edge(tree,q1_idx,q2_idx) {
             rewrite(neighbors, T.vertices[idx]);
     
             if (distance(newVertexConf, q) < threshold_goal) {
-                tree_add_vertex(T, q);
-                tree_add_edge(T, T.vertices.length - 1, idx);
+                // tree_add_vertex(T, q);
+                // tree_add_edge(T, T.vertices.length - 1, idx);
                 return "reached";
             } else {
                 return "advanced";

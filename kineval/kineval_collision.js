@@ -74,28 +74,6 @@ function robot_collision_forward_kinematics(q) {
     return traverse_collision_forward_kinematics_link(robot.links[robot.base], mstack, q);
 }
 
-function traverse_collision_forward_kinematics_joint(joint, mstack, q) {
-    var T = generate_transformation(joint.origin.xyz, joint.origin.rpy);
-    var q_angle = q[q_names[joint.name]];
-
-    var jointMotion;
-    if ((!robot.links_geom_imported && joint.type === undefined)
-        || joint.type === "revolute"
-        || joint.type === "continuous") {
-        jointMotion = kineval.quaternionToRotationMatrix(
-            kineval.quaternionNormalize(kineval.quaternionFromAxisAngle(joint.axis, q_angle))
-        );
-    } else if (joint.type === "prismatic") {
-        jointMotion = generate_translation_matrix(
-            q_angle*joint.axis[0], q_angle*joint.axis[1], q_angle*joint.axis[2]);
-    } else {
-        jointMotion = generate_identity(4);
-    }
-
-    mstack = matrix_multiply(matrix_multiply(mstack, T), jointMotion);
-    return traverse_collision_forward_kinematics_link(robot.links[joint.child], mstack, q)
-}
-
 function traverse_collision_forward_kinematics_link(link,mstack,q) {
 
     /* test collision FK
@@ -166,5 +144,25 @@ function traverse_collision_forward_kinematics_link(link,mstack,q) {
     return false;
 }
 
+function traverse_collision_forward_kinematics_joint(joint, mstack, q) {
+    var T = generate_transformation(joint.origin.xyz, joint.origin.rpy);
+    var q_angle = q[q_names[joint.name]];
 
+    var jointMotion;
+    if ((!robot.links_geom_imported && joint.type === undefined)
+        || joint.type === "revolute"
+        || joint.type === "continuous") {
+        jointMotion = kineval.quaternionToRotationMatrix(
+            kineval.quaternionNormalize(kineval.quaternionFromAxisAngle(joint.axis, q_angle))
+        );
+    } else if (joint.type === "prismatic") {
+        jointMotion = generate_translation_matrix(
+            q_angle*joint.axis[0], q_angle*joint.axis[1], q_angle*joint.axis[2]);
+    } else {
+        jointMotion = generate_identity(4);
+    }
+
+    mstack = matrix_multiply(matrix_multiply(mstack, T), jointMotion);
+    return traverse_collision_forward_kinematics_link(robot.links[joint.child], mstack, q)
+}
 
