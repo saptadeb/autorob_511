@@ -212,8 +212,6 @@ function generate_rotation_matrix_Z(angle) {
     return temp
 }
 
-// extra functions
-
 function generate_rotation_matrix (r,p,y){
     var m = matrix_multiply (generate_rotation_matrix_Z( y ), generate_rotation_matrix_Y( p ) );
     m = matrix_multiply (m, generate_rotation_matrix_X( r ) );
@@ -284,4 +282,128 @@ function rev_vec(vec) {
         res[n-1-i] = vec[i];
     }
     return res;
+}
+
+
+// **** ADVANCED EXTENSION: LU Decomposition ****//
+
+function matrix_inverse(A) {
+    // ---------------------------------------------------------------------------
+    // A                    // n x n matrix
+    // return A^(-1)        // n x n matrix
+    // ---------------------------------------------------------------------------
+
+    var i, j, k;
+    if (A.length !== A[0].length) {
+        return matrix_pseudoinverse(A);
+    }
+
+    var p = lu_decomposition(A);
+    var P = p.P;
+    var L = p.L;
+    var U = p.U;
+
+    var invL = generate_identity(L.length);
+    var invU = generate_identity(U.length);
+    for (i = 0; i < A.length; i++) {
+        for (k = i + 1; k < A.length; k++) {
+            for (j = i; j <= k - 1; j++) {
+                invL[k][i] -= L[k][j] * invL[j][i];
+            }
+        }
+    }
+    for (i = 0; i < A.length; i++) {
+        invU[i][i] = 1 / U[i][i];
+        for (k = i - 1; k >= 0; k--) {
+            var tmp = 0;
+            for (j = k + 1; j <= i; j++) {
+                tmp += U[k][j] * invU[j][i];
+            }
+            invU[k][i] = -tmp / U[k][k];
+        }
+    }
+    return matrix_multiply(matrix_multiply(invU, invL), P);
+}
+
+function lu_decomposition(A) {
+    // A: n x n matrix
+    // return {"P": P, "L": L, "U": U}
+    var n = A.length;
+    var P = generate_identity(n);
+    var L = generate_identity(n);
+    var U = matrix_copy(A);
+
+    for (var i = 0; i < n - 1; i++) {
+        var maxIndex = getMaxIndexInColumn(U, i);
+
+        if (i !== maxIndex) {
+            for (var j = i; j < n; j++) {
+                var tmp = U[i][j];
+                U[i][j] = U[maxIndex][j];
+                U[maxIndex][j] = tmp;
+            }
+            for (j = 0; j < i; j++) {
+                tmp = L[i][j];
+                L[i][j] = L[maxIndex][j];
+                L[maxIndex][j] = tmp;
+            }
+            tmp = P[i];
+            P[i] = P[maxIndex];
+            P[maxIndex] = tmp;
+        }
+
+        for (j = i + 1; j < n; j++) {
+            tmp = U[j][i] / U[i][i];
+            L[j][i] = tmp;
+            for (var k = i; k < n; k++) {
+                U[j][k] -= tmp * U[i][k];
+            }
+        }
+    }
+
+    return {"P": P, "L": L, "U": U};
+
+    function getMaxIndexInColumn(U, j) {
+        var max = Math.abs(U[j][j]);
+        var maxIndex = j;
+        for (var i = j + 1; i < U.length; i++) {
+            var entry = Math.abs(U[i][j]);
+            if (entry > max) {
+                max = entry;
+                maxIndex = i;
+            }
+        }
+        return maxIndex;
+    }
+}
+
+function linear_solve(A, b) {
+    // return x, where Ax = b
+    var i, j, sum;
+    var p = lu_decomposition(A);
+    var P = p.P;
+    var L = p.L;
+    var U = p.U;
+
+    var P_b = matrix_multiply(P, b);
+
+    var U_x = [];
+    for (i = 0; i < b.length; i++) {
+        U_x[i] = [];
+        sum = 0;
+        for (j = 0; j < i; j++) {
+            sum += L[i][j] * U_x[j][0];
+        }
+        U_x[i][0] = P_b[i][0] - sum;
+    }
+
+    var x = [];
+    for (i = b.length - 1; i >= 0; i--) {
+        sum = 0;
+        for (j = i + 1; j < b.length; j++) {
+            sum += U[i][j] * x[j - i - 1][0];
+        }
+        x.unshift([(U_x[i][0] - sum) / U[i][i]]);
+    }
+    return x;
 }
