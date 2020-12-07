@@ -204,7 +204,7 @@ function extendRRTStar(T, q) {
 
         for (i = 0; i < T.vertices.length; i++) {
             var dist = distance(newVertex, T.vertices[i].vertex);
-            if (dist <= eps) {
+            if (dist <= 2*eps) {
                 neighbors.push(T.vertices[i]);
             }
         }
