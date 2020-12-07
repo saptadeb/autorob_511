@@ -1,4 +1,4 @@
-//CI grader generates report at 06-12-2020-18-58-30
+//CI grader generates report at 07-12-2020-00-55-12
 grade = 
 {
   "saptadeb": {
@@ -477,23 +477,23 @@ grade =
         ]
       }, 
       "MotionPlan_Collision": {
-        "status": "PENDING", 
+        "status": "PASS", 
         "test results": {
           "Test 2": {
             "Status": "Succeed", 
             "Stderr": ""
           }, 
           "Test 0": {
-            "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /saptadeb/MotionPlan_Collision/test_0.js:975\n            local_collision = traverse_collision_forward_kinematics_joint(robot.joints[link.children[i]],mstack,q)\n            ^\n\nReferenceError: traverse_collision_forward_kinematics_joint is not defined\n    at traverse_collision_forward_kinematics_link (/saptadeb/MotionPlan_Collision/test_0.js:975:13)\n    at robot_collision_forward_kinematics (/home/eecs367/ROB511_EE"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 1": {
-            "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /saptadeb/MotionPlan_Collision/test_1.js:975\n            local_collision = traverse_collision_forward_kinematics_joint(robot.joints[link.children[i]],mstack,q)\n            ^\n\nReferenceError: traverse_collision_forward_kinematics_joint is not defined\n    at traverse_collision_forward_kinematics_link (/saptadeb/MotionPlan_Collision/test_1.js:975:13)\n    at robot_collision_forward_kinematics (/home/eecs367/ROB511_EE"
+            "Status": "Succeed", 
+            "Stderr": ""
           }
         }, 
         "comments": [
-          "1 out of 3 test cases passed"
+          "3 out of 3 test cases passed"
         ]
       }, 
       "MotionPlan_2DRRTConnect": {
