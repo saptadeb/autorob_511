@@ -1,4 +1,4 @@
-//CI grader generates report at 08-12-2020-00-42-41
+//CI grader generates report at 08-12-2020-06-37-44
 grade = 
 {
   "saptadeb": {
@@ -497,11 +497,11 @@ grade =
         ]
       }, 
       "MotionPlan_2DRRTConnect": {
-        "status": "PENDING", 
+        "status": "PASS", 
         "test results": {
           "Test 2": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Incorrect search_result status\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 3": {
             "Status": "Succeed", 
@@ -517,7 +517,7 @@ grade =
           }
         }, 
         "comments": [
-          "3 out of 4 test cases passed"
+          "4 out of 4 test cases passed"
         ]
       }, 
       "MotionPlan_CSpaceRRTConnect": {
